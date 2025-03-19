@@ -35,3 +35,4 @@ Pasko na, pasko na
 Simulan na ang saya
 
 Zyd was here OwO
+<!--Tristan Segundo @gmail -->
