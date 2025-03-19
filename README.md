@@ -15,4 +15,3 @@ This is it pancit nagugutom nako bai
 rio libre moko burger
 
 
-<!--Tristan Segundo lmao XD 69 420-->
