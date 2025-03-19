@@ -1,6 +1,7 @@
 # SoftDev
 Mga durugista ng udm
 
-Watcho man, u should watch yo mouth, bitches is pressed administer mouth 2 mouth... u c dem stax??? u know what i am abouttt??? 
-I am the CHAMPP
-miss ko na sya
+D'amalfi in a bar Au in a goose
+A photo of me knocked Chuck point black smooth
+Ikaw ang minsan sa mga palagi
+Ang mitolohiya sa'yo'y maaari (hey)
