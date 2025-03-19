@@ -58,4 +58,4 @@ Napagtanto na
 Gusto kita
 
 
-Zyd was here
+#Zyd was here OwO
