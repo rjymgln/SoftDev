@@ -352,7 +352,7 @@ header{
  }
 
  #openForm {
-  display: none;
+  visibility: none;
   opacity: 0; 
   transition: opacity 0.5s ease;
 }
@@ -361,3 +361,238 @@ header{
   display: block;
   opacity: 1;
 }
+
+/*About us Page*/
+.cafesome_info {
+  position: relative;
+  top: 120px;                 
+}
+.owner{
+  padding: 0 300px 0 300px;
+}
+
+.ownerimg img {
+  margin: 20px 0 0 ;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.about_us_two{
+  height: 80vh;
+  font-family: "Tenor Sans", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.story_of_cafe, .cafeinside{
+  position: relative;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cafeinside, .story_of_cafe{
+
+  h1, p{
+      padding-bottom: 10px;
+  }
+  h1{
+      font-size: 2rem;
+  }
+  p{
+      padding: 0 50px 0 50px;
+      font-size: 1.2rem;
+  }
+}
+.cafeinside{
+  text-align: center;
+}
+.story_of_cafe{
+  text-align: justify;
+  p{
+      border-radius: 20px;
+      margin: 0 40px 0 40px;
+      padding: 50px;
+      background-color: var(--theme-color2);
+  }
+}
+.cafeinside img{
+  padding-top: 20px;
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/*Contact Page*/
+.contact{
+  height: 80vh;
+}
+
+.container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px 10px;
+}
+
+.container:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./Assets/cafebackground1.jpg') center no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
+.contact-page{
+  max-width: 850px;
+  display: grid;
+  border-radius: 5px;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--theme-color2);
+  box-shadow: 0px 0px 15px 5px var(--theme-color6)
+}
+
+.left{
+  left: 100%;
+}
+
+.right{
+  padding: 25px 40px;
+}
+
+.contact-name{
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-name:after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: black;
+
+}
+
+textarea{
+  height: 200px;
+}
+
+.field{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-color: var(--theme-color1);
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: .3s;
+  border-radius: 5px;
+}
+
+.field:hover{
+  background-color: whitesmoke;
+}
+
+.field:focus{
+  background-color: var(--theme-color1);
+  border: 0.5px solid #000000;
+}
+
+.area{
+  min-height: 150px;
+}
+
+.contact-btn{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: whitesmoke;
+  cursor: pointer;
+  outline: none;
+  border: 0.5px burlywood solid;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact-btn:hover{
+  background-color: var(--theme-color3);
+}
+/* FOOTER */
+footer{
+  height: 20vh;
+  background-color: var(--theme-color5);
+}
+.more_information{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.information-links, .cafe_logo_footer, .socmedia-links{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0;
+}
+
+.cafe_logo_footer, .socmedia-links,.information-links{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.socialmedia_text, .creditscafe{
+  color: var(--theme-color1);
+}
+.documents_cafe{
+  display: flex;
+  gap: 50px;
+}
+.information-links :nth-child(1),.information-links :nth-child(2),.information-links :nth-child(3){
+  font-size: 1rem;
+  transition-duration: .5s;
+}
+.documents_cafe :nth-child(1):hover{
+  font-size: 1.1rem;
+}
+.documents_cafe :nth-child(2):hover{
+  font-size: 1.1rem;
+}
+.documents_cafe :nth-child(3):hover{
+  font-size: 1.1rem;
+}
+
+.information-links a{
+  text-decoration: none;
+  color: var(--theme-color1);
+}
+.cafe_logo_footer img{
+  height: 100px;
+  border-radius: 50%;
+}
+.social-media-icons{
+  display: flex;
+  gap: 20px;
+}
+.googleicon{
+  position: relative;
+  top: 22px;
+  left: -30px;
+}
+.socialmedia_text h1{
+  font-size: 1.5rem;
+  text-align: center;
+}
+
