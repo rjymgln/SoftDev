@@ -1,5 +1,4 @@
 import './WebsiteCafe.css';
-import logo from './Assets/cafelogo.png'
 import frappe1 from './Assets/frappe1.png'
 import coffee1 from './Assets/coffee1.png'
 import frappe2 from './Assets/frappe2.png'
@@ -15,7 +14,7 @@ export default function App() {
       {/* NAVIGATION */}
     <header className='top_bar'>
       <div className='cafe_logo'>
-          <img src={logo}/>
+          <img src={require('./Assets/cafelogo.png')}/>
           <h1>GV CAFE</h1>
       </div>
       
@@ -208,6 +207,22 @@ export default function App() {
       </div>
       <div className='cafe_logo_footer'>
         <img src={require('./Assets/cafelogo.png')} alt=''/>
+      </div>
+
+      <div className='socmedia-links'>
+        <div className='socialmedia_text'>
+          <h1>Visit Us</h1>
+          <a href='https://www.google.com/maps/place/GV+CAFE/@14.6190669,120.9666608,861m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3397b500696278fb:0x8265e4970f5fcedc!2sGV+CAFE!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403!3m5!1s0x3397b500696278fb:0x8265e4970f5fcedc!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D'>
+            <lord-icon className='googleicon'
+              src='https://cdn.lordicon.com/rbsqvtgo.json'
+              trigger='morph'
+              state='morph-circle'
+              colors='primary: #ffffff, secondary: #3080e8'
+              style={{width: "20px", height: "20px"}}
+            >
+            </lord-icon>
+          </a>
+        </div>
       </div>
     </footer>
 
