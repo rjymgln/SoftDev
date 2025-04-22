@@ -1,7 +1,4 @@
 import './WebsiteCafe.css';
-import frappe1 from './Assets/frappe1.png'
-import coffee1 from './Assets/coffee1.png'
-import frappe2 from './Assets/frappe2.png'
 import coffeecover from './Assets/coffeecover.jpg'
 import frappeCover from './Assets/frappeCover.jpg'
 import milkteacover from './Assets/milkteacover.jpg'
@@ -14,7 +11,7 @@ export default function App() {
       {/* NAVIGATION */}
     <header className='top_bar'>
       <div className='cafe_logo'>
-          <img src={require('./Assets/cafelogo.png')}/>
+          <img src={require('./Assets/cafelogo.png')} alt=''/>
           <h1>GV CAFE</h1>
       </div>
       
@@ -24,7 +21,8 @@ export default function App() {
           trigger="hover"
           colors="primary:#000000"
           style={{ width: "30px", height: "30px" }}
-        />
+        >
+        </lord-icon>
       </button>
 
       <div className='navbar'>
@@ -41,29 +39,29 @@ export default function App() {
 
     {/* homepage */}
     <section class="homepage" id="HomePage">
-            <div class="welcoming_user">
-                <h1>Welcome to GV Cafe</h1>
-                <p>Discover the origins of our coze café, where the passion for coffee and community
-                blend seamlessly.</p>
-
-                    <a href="#ProductSelection">
-                        <div class="view_product">
-                            <button type="button">Explore Our Drinks</button>
-                        </div>
-                    </a>    
-            </div>
-        <div class="swiper mySwiper">
-            <div class="bestproduct_title">
-                <h1>Check Our Best Selling Coffee</h1>
-            </div>
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src={frappe1} alt=""/></div>
-              <div class="swiper-slide"><img src={coffee1} alt=""/></div>
-              <div class="swiper-slide"><img src={frappe2} alt=""/></div>
-            </div>
-            <div class="autoplay-progress">
-            </div>
+      <div class="welcoming_user">
+          <h1>Welcome to GV Cafe</h1>
+          <p>Discover the origins of our coze café, where the passion for coffee and community
+          blend seamlessly.</p>
+              <a href="#ProductSelection">
+                  <div class="view_product">
+                      <button type="button">Explore Our Drinks</button>
+                  </div>
+              </a>    
+      </div>
+      
+      <div class="swiper mySwiper">
+          <div class="bestproduct_title">
+              <h1>Check Our Best Selling Coffee</h1>
           </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src={require('./Assets/frappe1.png')} alt=""/></div>
+            <div class="swiper-slide"><img src={require('./Assets/coffee1.png')} alt=""/></div>
+            <div class="swiper-slide"><img src={require('./Assets/frappe2.png')} alt=""/></div>
+          </div>
+          <div class="autoplay-progress">
+          </div>
+        </div>
     </section>
 
     {/* PRODUCTS SELECTION */}
@@ -72,25 +70,28 @@ export default function App() {
         <div className='products products_selection'>
           <div className='product_name'>Frappe</div>
           <a href='WebsiteFrappe.js' id='openProduct'> 
-            <img src={frappeCover}/>
+            <img src={frappeCover} alt=''/>
           </a>
         </div>
+
         <div className='products products_selection'>
           <div className='product_name'>Coffee</div>
           <a href='null' id='openProduct'> 
-            <img src={coffeecover}/>
+            <img src={coffeecover} alt=''/>
           </a>
         </div>
+
         <div className='products products_selection'>
           <div className='product_name'>Milk Tea</div>
           <a href='null' id='openProduct'> 
-            <img src={milkteacover}/>
+            <img src={milkteacover} alt=''/>
           </a>
         </div>
+        
         <div className='products products_selection'>
           <div className='product_name'>Fruit Tea</div>
           <a href='null' id='openProduct'> 
-            <img src={sodacover}/>
+            <img src={sodacover} alt=''/>
           </a>
         </div>
         
@@ -214,11 +215,11 @@ export default function App() {
           <h1>Visit Us</h1>
           <a href='https://www.google.com/maps/place/GV+CAFE/@14.6190669,120.9666608,861m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3397b500696278fb:0x8265e4970f5fcedc!2sGV+CAFE!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403!3m5!1s0x3397b500696278fb:0x8265e4970f5fcedc!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D'>
             <lord-icon className='googleicon'
-              src='https://cdn.lordicon.com/rbsqvtgo.json'
-              trigger='morph'
-              state='morph-circle'
-              colors='primary: #ffffff, secondary: #3080e8'
-              style={{width: "20px", height: "20px"}}
+              src='https://cdn.lordicon.com/smafogdu.json'
+              trigger='hover'
+              state='hover-draw'
+              colors="primary: #ffffff, secondary: #3080e8"
+              style={{width: "40px", height: "40px"}}
             >
             </lord-icon>
           </a>
