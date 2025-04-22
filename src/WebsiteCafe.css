@@ -13,10 +13,13 @@
   --theme-color6: #000000;
   --theme-color7: #ffffff;
 }
-.homepage,.product_selection1{
-  background: linear-gradient(to bottom, #f7e6d4, #dbc1ac);
-
+.homepage{
+  background: linear-gradient(to bottom, #f7e6d4 50%, #dbc1ac 100%);
 }
+.product_selection1{
+  background: linear-gradient(to bottom, #dbc1ac , var(--theme-color3) 100%);
+}
+
 /* NAVBAR */
 header{
   padding: 4px 10px;
@@ -325,7 +328,6 @@ header{
   height: 100%;
   width: 100%;
   padding: 10px 200px 0 200px;
-  background-color: whitesmoke;
   border: none;
   text-align: center;
   font-size: 20px;
@@ -383,6 +385,7 @@ header{
   object-fit: cover;
 }
 .about_us_two{
+  background-color: var(--theme-color3);
   height: 80vh;
   font-family: "Tenor Sans", sans-serif;
   display: grid;
@@ -390,7 +393,7 @@ header{
 }
 .story_of_cafe, .cafeinside{
   position: relative;
-  top: 120px;
+  top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -402,12 +405,14 @@ header{
   }
   h1{
       font-size: 2rem;
+      color: var(--theme-color1);
   }
   p{
       padding: 0 50px 0 50px;
       font-size: 1.2rem;
   }
 }
+
 .cafeinside{
   text-align: center;
 }
@@ -430,6 +435,8 @@ header{
 /*Contact Page*/
 .contact{
   height: 80vh;
+  background: linear-gradient(to bottom, var(--theme-color3) 50%, var(--theme-color4) 100%);
+
 }
 
 .container{
