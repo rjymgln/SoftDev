@@ -114,7 +114,7 @@ header{
 }
 
 .bestproduct_title h1{
-  position: fixed;
+  position: relative;
   top: 12%;
   right: 13%;
   font-size: 2rem;
@@ -139,16 +139,19 @@ header{
 /* PRODUCT IMAGES HOME PAGE */
 .swiper {
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
+  height: auto;
+  display: grid;
+  grid-column: 1fr 1fr;
+  justify-content: center;
   align-items: center;
-  overflow: hidden;
-  cursor: grab;
 }
 .swiper-wrapper {
-  display: flex;  
-  justify-content: center;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+  height: auto;
 }
 
 .swiper-slide {
@@ -157,19 +160,20 @@ header{
   justify-content: center;
   align-items: center;
   flex-shrink: 0; 
+  width: 75%;
+  height: auto;
   color: #000000;
   transition: opacity 0.5s ease-in-out;
   opacity: 0.5;
+  transform: rotate(10deg);
   animation: bestproductimg 5s ease-in-out infinite;
 }
 
 .swiper-slide img {
-  filter: drop-shadow(-15px 25px 10px var(--theme-color6));
-  display: block;
-  width: 250px;
-  height: 300px; 
+  filter: drop-shadow(-15px 25px 10px var(--theme-color6)); 
   object-fit: cover;
-  transform: rotate(10deg);
+  max-height: 100%;
+
 }
 .swiper-slide-active{
   opacity: 1;
@@ -491,6 +495,7 @@ header{
 
 textarea{
   height: 200px;
+  resize: none;
 }
 
 .field{
