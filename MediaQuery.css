@@ -1,0 +1,409 @@
+/* MOBILE VIEW */
+
+@media (max-width:600px){
+    .menu-row{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+   
+@media screen and (max-width: 768px) {
+.top_bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hide the regular navbar links */
+.navbar {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 70px; 
+    right: 0;
+    background: rgb(163,120,84);
+    background: linear-gradient(90deg, rgba(163,120,84,1) 0%, rgba(234,194,154,1) 35%, rgba(191,143,94,1) 100%);
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar nav ul {
+    flex-direction: column;
+    text-align: center;
+}
+
+.navbar li {
+    display: block;
+    padding: 15px 0;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block; 
+}
+
+.menu-toggle lord-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.navbar.active {
+    display: flex; 
+}
+
+/* Home Page */
+.homepage {
+    grid-template-columns: 1fr; 
+    text-align: center;
+    height: 100vh;
+    padding: 50px 10px;
+}
+
+.welcoming_user {
+    top: -50px;
+    left: 0;
+}
+
+.welcoming_user h1 {
+    font-size: 2rem;
+}
+
+.welcoming_user p {
+    font-size: .8rem;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0 auto; 
+}
+.view_product button {
+    display: none;
+}
+
+.bestproduct_title h1{
+    font-size: 1.5rem;
+    top: 300px;
+}
+/* Home Product Images */
+.swiper-slide img {
+    width: 150px;
+    height: 250px;
+}
+
+/* Product Selection */
+.product_selection1 {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.main_product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.product_selection {
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+.product_selection img {
+    width: 100%;
+    height: 250px;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.product_name {
+    font-size: 1.5rem;
+    padding: 100px 0 0 0 ;
+    text-align: center;
+}
+.products:nth-child(1), .products:nth-child(2), .products:nth-child(3), .products:nth-child(4){
+    margin-top: -200px;
+}
+
+/* MENU */
+.form-container {
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+    padding:  0 200px 0 200px;
+    background-color: whitesmoke;
+    border: none;
+    text-align: center;
+
+   li{
+    font-size: 11px;
+   }
+}
+
+.menu-row{
+    display: flex;
+    flex-direction: row;
+}
+.btn{
+    position: relative;
+    top: -480px;
+    left: 290px;
+}
+
+/* About Us */
+.about_us {
+    height: auto;
+    padding: 20px;
+}
+.about_us_two{
+    margin-top: -50px;
+    height: 100vh;
+}
+.about_us, .about_us_two{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px 0 0 0;
+}
+.owner {
+    padding: 0;
+}
+
+.ownerimg img {
+    width: 50px;
+    height: 50px;
+}
+
+.cafeinside img {
+    width: 300px;
+    height: 100%;
+}
+.story_of_cafe,.cafehome {
+    margin: 0 0 20px 0;
+    h1{
+        font-size: 1.2rem;
+    }
+    p{
+        font-size: .7rem;
+    }
+}
+
+/* Contact Page */
+.contact-page {
+    grid-template-columns: 1fr; /* Single column */
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.right {
+    padding: 10px;
+    }
+
+.field {
+    font-size: 1rem;
+}
+
+.contact-btn {
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    height: auto;
+    padding: 20px;
+}
+
+.more_information {
+    grid-template-columns: 1fr; /* Stack footer sections */
+    }
+    
+.information-links, .cafe_logo_footer, .socmedia-links {
+    margin: 10px 0;
+    gap: 20px;
+}
+
+.cafe_logo_footer img {
+    height: 80px;
+}
+
+.social-media-icons {
+    gap: 10px;
+}
+.homepage, .about_us, .product_selection, .contact, .story_of_cafe {
+    transition: none; 
+}
+}
+
+/* Tablet View */
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+    /*Navbar*/
+.top_bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+    
+.navbar {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 70px; 
+    right: 0;
+    background: rgb(163,120,84);
+    background: linear-gradient(90deg, rgba(163,120,84,1) 0%, rgba(234,194,154,1) 35%, rgba(191,143,94,1) 100%);
+    width: 100%;
+    z-index: 100;
+}
+    
+.navbar nav ul {
+    flex-direction: row;
+    text-align: center;
+
+}
+    
+.navbar li {
+    display: block;
+    padding: 15px 0;
+
+    a{
+        font-size: 1.5rem;
+    }
+}
+    
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block; 
+}
+    
+.menu-toggle lord-icon {
+    width: 50px;
+    height: 50px;
+}
+    
+.navbar.active {
+    display: flex; 
+}
+
+/* Homepage */
+.homepage {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+.welcoming_user {
+    top: -30px;
+    left: 0;
+    margin: 0 auto;
+}
+.welcoming_user h1 {
+    font-size: 2rem;
+}
+
+.welcoming_user p {
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0 auto; 
+}
+.view_product button {
+    display: none;
+}
+
+.bestproduct_title h1{
+    position: absolute;
+    font-size: 2rem;
+    top: 300px;
+    left: 100px;
+}
+.view_product button {
+    display: none;
+}
+.swiper-wrapper img{
+    width: 300px;
+    height: auto;
+}
+
+/* Product Selection */
+.main_product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+.product_selection img {
+    width: 350px;
+    height: auto;
+}
+.product_name {
+    top: 100px;
+    font-size: 3rem;
+}
+.products:nth-child(3), .products:nth-child(4){
+    margin-top: -300px;
+}
+.btn{
+    top: -480px;
+    left: 450px;
+}
+/* About Us */
+.about_us_two {
+    margin-top: 100px;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+.ownerimg img{
+    width: 80px;
+    height: auto;
+}
+.cafesome_info, .story_of_cafe, .cafeinside{
+    h1{
+        font-size: 2.5rem;
+    }
+    p{
+        font-size: 1.5rem;
+    }
+}
+
+.story_of_cafe, .cafeinside {
+    top: 50px;
+}
+.cafeinside img {
+    height: 300px;
+    width: auto;
+}
+.story_of_cafe,.cafehome{
+    margin: 0 0 40px 0;
+}
+
+/* Contact Page */
+.contact-page {
+    grid-template-columns: 1fr;
+}
+.right {
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    height: auto;
+    padding: 20px;
+}
+
+.creditscafe p{
+    font-size: 1rem;
+    text-align: center;
+}
+.information-links, .social-media-icons, .cafe_logo_footer{
+    gap: 30px;
+    }
+}
