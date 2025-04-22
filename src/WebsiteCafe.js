@@ -1,4 +1,5 @@
 import './WebsiteCafe.css';
+import './MediaQuery.css'
 import coffeecover from './Assets/coffeecover.jpg'
 import frappeCover from './Assets/frappeCover.jpg'
 import milkteacover from './Assets/milkteacover.jpg'
