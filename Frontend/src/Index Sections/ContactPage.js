@@ -1,5 +1,4 @@
 import React from 'react'
-import WebsiteCafe from '../We'
 
 export default function ContactPage() {
   return (
