@@ -1,10 +1,11 @@
 import React from 'react'
+import WebsiteCafe from '../We'
 
 export default function ContactPage() {
   return (
     <>
       <section className="contact" id="Contact">
-        <form action="WebsiteCafe.php" className="container" method="post">
+        <form action="WebsiteCafe" className="container" method="post">
           <div className="contact-page">
             <div className="left" />
             <div className="right">
