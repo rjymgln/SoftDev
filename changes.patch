@@ -1,0 +1,1440 @@
+diff --git a/Frontend/public/index.html b/Frontend/public/index.html
+index f68f7f2..c19c99a 100644
+--- a/Frontend/public/index.html
++++ b/Frontend/public/index.html
+@@ -42,7 +42,7 @@
+       To begin the development, run `npm start` or `yarn start`.
+       To create a production bundle, use `npm run build` or `yarn build`.
+     -->
+-    <scrip src="/src/animation.js"></scrip>
+-    <scrip src="/src/cafe.js"></scrip>
++    <script src="/src/animation.js"></script>
++    <script src="/src/cafe.js"></script>
+   </body>
+ </html>
+diff --git a/Frontend/src/AuthPage.css b/Frontend/src/AuthPage.css
+new file mode 100644
+index 0000000..9b306a1
+--- /dev/null
++++ b/Frontend/src/AuthPage.css
+@@ -0,0 +1,37 @@
++.App {
++  text-align: center;
++}
++
++.App-logo {
++  height: 40vmin;
++  pointer-events: none;
++}
++
++@media (prefers-reduced-motion: no-preference) {
++  .App-logo {
++    animation: App-logo-spin infinite 20s linear;
++  }
++}
++
++.App-header {
++  background-color: #282c34;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  justify-content: center;
++  font-size: calc(10px + 2vmin);
++  color: white;
++}
++
++.App-link {
++  color: #61dafb;
++}
++
++@keyframes App-logo-spin {
++  from {
++    transform: rotate(0deg);
++  }
++  to {
++    transform: rotate(360deg);
++  }
++}
+diff --git a/Frontend/src/AuthPage.js b/Frontend/src/AuthPage.js
+new file mode 100644
+index 0000000..ec48f01
+--- /dev/null
++++ b/Frontend/src/AuthPage.js
+@@ -0,0 +1,58 @@
++import React, { useState, useEffect } from 'react';
++import Login from './components/Login';
++import SignUp from './components/SignUp';
++import ForgotPassword from './components/ForgotPassword';
++import WebsiteCafe from './WebsiteCafe'; // Import your WebsiteCafe component
++
++function AuthPage() {
++  const [isLoggedIn, setIsLoggedIn] = useState(false);
++  const [loading, setLoading] = useState(true); // Add a loading state
++  const path = window.location.pathname;
++
++  useEffect(() => {
++    const storedLoginStatus = localStorage.getItem('isLoggedIn');
++    console.log('storedLoginStatus:', storedLoginStatus); // Add this line
++    if (storedLoginStatus === 'true') {
++      setIsLoggedIn(true);
++    }
++    setLoading(false); // Set loading to false after checking storage
++  }, []);
++
++  const handleLoginSuccess = () => {
++    setIsLoggedIn(true);
++    localStorage.setItem('isLoggedIn', 'true');
++    window.history.pushState({}, '', '/cafe');
++  };
++
++  const handleLogout = () => {
++    setIsLoggedIn(false);
++    localStorage.removeItem('isLoggedIn');
++    window.history.pushState({}, '', '/'); // Go back to login page
++  };
++
++  // Render nothing while checking login status
++  if (loading) {
++    return null; // Or a loading spinner
++  }
++
++  let content;
++  if (isLoggedIn) {
++    content = <WebsiteCafe onLogout={handleLogout} />;
++  } else if (path === '/') {
++    content = <Login onLoginSuccess={handleLoginSuccess} />;
++  } else if (path === '/signup') {
++    content = <SignUp />;
++  } else if (path === '/forgotpassword') {
++    content = <ForgotPassword />;
++  } else {
++    content = <div>Page Not Found</div>;
++  }
++
++  return (
++    <>
++      {content}
++    </>
++  );
++}
++
++export default AuthPage;
+\ No newline at end of file
+diff --git a/Frontend/src/Index Sections/AboutUs.js b/Frontend/src/Index Sections/AboutUs.js
+deleted file mode 100644
+index fa505f1..0000000
+--- a/Frontend/src/Index Sections/AboutUs.js	
++++ /dev/null
+@@ -1,46 +0,0 @@
+-import React from 'react'
+-
+-export default function AboutUs() {
+-  return (
+-    <>
+-      <section className="about_us_two" id="aboutus">
+-        <div className="story_of_cafe">
+-          <h1>Our Story</h1>
+-          <p>
+-            Welcome to GV Café, your new favorite spot for good vibes and great
+-            coffee! Established in February 2024, our café was created with a simple
+-            mission: to be a cozy haven for students and the community.
+-            <br />
+-            <br />
+-            The name GV stands for Good Vibes, and that’s exactly what we aim to
+-            bring to everyone who steps through our doors. Located conveniently near
+-            schools, we’re here to offer a relaxing space where you can unwind,
+-            study, or catch up with friends over a cup of coffee, refreshing drinks,
+-            and delicious snacks. <br />
+-            <br />
+-            At GV Café, it’s not just about the food and drinks it’s about creating
+-            an atmosphere where positivity thrives. Whether you’re here for a quick
+-            break between classes or a place to recharge, we’ve got you covered.
+-            <br />
+-            <br />
+-            Come visit us and experience the Good Vibes!
+-          </p>
+-        </div>
+-        <div className="cafeinside">
+-          <div className="cafehome">
+-            <h1>Where Every Sip Feels Like Home</h1>
+-            <p>
+-              At Cafe Haven, we blend our passion for coffee with a unique
+-              atmosphere
+-              <br />
+-              that invites relaxation and connection.
+-            </p>
+-          </div>
+-          <div className="cafehomeimg">
+-            <img src={require('../Assets/cafebackground2.jpg')} alt="" />
+-          </div>
+-        </div>
+-      </section>
+-    </>
+-  )
+-}
+\ No newline at end of file
+diff --git a/Frontend/src/Index Sections/ContactPage.js b/Frontend/src/Index Sections/ContactPage.js
+deleted file mode 100644
+index 2440451..0000000
+--- a/Frontend/src/Index Sections/ContactPage.js	
++++ /dev/null
+@@ -1,44 +0,0 @@
+-import React from 'react'
+-
+-export default function ContactPage() {
+-  return (
+-    <>
+-      <section className="contact" id="Contact">
+-        <form action="WebsiteCafe" className="container" method="post">
+-          <div className="contact-page">
+-            <div className="left" />
+-            <div className="right">
+-              <h2 className="contact-name">Contact Us</h2>
+-              <input
+-                type="text"
+-                className="field"
+-                placeholder="Enter Name"
+-                id="Name"
+-                name="Name"
+-                required=""
+-              />
+-              <input
+-                type="email"
+-                className="field"
+-                placeholder="Enter Email"
+-                id="Email"
+-                name="Email"
+-                required=""
+-              />
+-              <textarea
+-                type="text"
+-                className="field"
+-                placeholder="Message"
+-                id="Message"
+-                name="Message"
+-                required=""
+-                defaultValue={""}
+-              />
+-              <button className="contact-btn">Send</button>
+-            </div>
+-          </div>
+-        </form>
+-      </section>
+-    </>
+-  )
+-}
+\ No newline at end of file
+diff --git a/Frontend/src/Index Sections/Footer.js b/Frontend/src/Index Sections/Footer.js
+deleted file mode 100644
+index 81287f2..0000000
+--- a/Frontend/src/Index Sections/Footer.js	
++++ /dev/null
+@@ -1,68 +0,0 @@
+-import React from 'react'
+-
+-export default function Footer() {
+-  return (
+-    <>
+-      <footer className="more_information">
+-        <div className="information-links">
+-          <div className="documents_cafe">
+-            <a href="null">Copyright</a>
+-            <a href="null">Privacy Policy</a>
+-            <a href="null">FAQ</a>
+-          </div>
+-          <div className="creditscafe">
+-            <p>© GV Cafe 2024, Where Every Coffee Feels Like Home</p>
+-          </div>
+-        </div>
+-        <div className="cafe_logo_footer">
+-          <img src={require('../Assets/cafelogo.png')} alt="GV CAFE" />
+-        </div>
+-        <div className="socmedia-links">
+-          <div className="socialmedia_text">
+-            <h1>Visit Us</h1>
+-            <a href="https://www.google.com/maps/place/GV+CAFE/@14.6190669,120.9666608,861m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3397b500696278fb:0x8265e4970f5fcedc!2sGV+CAFE!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403!3m5!1s0x3397b500696278fb:0x8265e4970f5fcedc!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">
+-              <lord-icon
+-                className="googleicon"
+-                src="https://cdn.lordicon.com/rbsqvtgo.json"
+-                trigger="morph"
+-                state="morph-circle"
+-                colors="primary:#ffffff,secondary:#3080e8"
+-                style={{ width: 20, height: 20 }}
+-              ></lord-icon>
+-            </a>
+-            <p>1901 franco st tondo manila, Manila, Philippines</p>
+-          </div>
+-          <div className="social-media-icons">
+-            <a href="https://www.facebook.com/profile.php?id=61555611452098">
+-              <lord-icon
+-                src="https://cdn.lordicon.com/bfoumeno.json"
+-                trigger="morph"
+-                state="morph-circle"
+-                colors="primary:#ffffff,secondary:#3080e8"
+-                style={{ width: 30, height: 30 }}
+-              ></lord-icon>
+-            </a>
+-            <a href="https://www.tiktok.com/@gvcafe?fbclid=IwZXh0bgNhZW0CMTAAAR39Sgtpo06l86D_zxzkJpL_P0LFH6D0z5h_5AbWWFQhGPgAlQhuWUt5xwo_aem_5OmquRJTT0_YnvJbMhUysw">
+-              <lord-icon
+-                src="https://cdn.lordicon.com/zmvgugmh.json"
+-                trigger="morph"
+-                state="morph-circle"
+-                colors="primary:#ffffff,secondary:#000000"
+-                style={{ width: 30, height: 30 }}
+-              ></lord-icon>
+-            </a>
+-            <a href="null">
+-              <lord-icon
+-                src="https://cdn.lordicon.com/ewswvzmw.json"
+-                trigger="morph"
+-                state="morph-circle"
+-                colors="primary:#ffffff,secondary:#e8308c"
+-                style={{ width: 30, height: 30 }}
+-              ></lord-icon>
+-            </a>
+-          </div>
+-        </div>
+-      </footer>
+-    </>
+-  )
+-}
+\ No newline at end of file
+diff --git a/Frontend/src/Index Sections/HOMEPAGE.js b/Frontend/src/Index Sections/HOMEPAGE.js
+deleted file mode 100644
+index ebd819d..0000000
+--- a/Frontend/src/Index Sections/HOMEPAGE.js	
++++ /dev/null
+@@ -1,39 +0,0 @@
+-import React from 'react'
+-
+-export default function HOMEPAGE() {
+-  return (
+-    <>
+-      <section className="homepage" id="HomePage">
+-        <div className="welcoming_user">
+-          <h1>Welcome to GV Cafe</h1>
+-          <p>
+-            Discover the origins of our coze café, where the passion for coffee and
+-            community blend seamlessly.
+-          </p>
+-          <a href="#ProductSelection">
+-            <div className="view_product">
+-              <button type="button">Explore Our Drinks</button>
+-            </div>
+-          </a>
+-        </div>
+-        <div className="swiper mySwiper">
+-          <div className="bestproduct_title">
+-            <h1>Check Our Best Selling Coffee</h1>
+-          </div>
+-          <div className="swiper-wrapper">
+-            <div className="swiper-slide">
+-              <img src={require('../Assets/frappe1.png')} alt="" />
+-            </div>
+-            <div className="swiper-slide">
+-              <img src={require('../Assets/coffee1.png')} alt="" />
+-            </div>
+-            <div className="swiper-slide">
+-              <img src={require('../Assets/frappe2.png')} alt="" />
+-            </div>
+-          </div>
+-          <div className="autoplay-progress"></div>
+-        </div>
+-      </section>
+-    </>
+-  )
+-}
+\ No newline at end of file
+diff --git a/Frontend/src/Index Sections/NAVBAR.js b/Frontend/src/Index Sections/NAVBAR.js
+index 5c0a412..785da81 100644
+--- a/Frontend/src/Index Sections/NAVBAR.js	
++++ b/Frontend/src/Index Sections/NAVBAR.js	
+@@ -1,6 +1,9 @@
+ import React from 'react'
+ 
+-export default function NAVBAR() {
++export default function NAVBAR({onLogout}) {
++  const handleLogoutClick = () => {
++    onLogout(); // Go back to login page
++  };
+   return (
+     <>
+       <header className="top_bar">
+@@ -39,6 +42,8 @@ export default function NAVBAR() {
+                   CONTACT
+                 </a>
+               </li>
++              <li>
++                <a href="/" onClick={handleLogoutClick}>LOGOUT</a>              </li>
+             </ul>
+           </nav>
+         </div>
+diff --git a/Frontend/src/Index Sections/ProductsSelection.js b/Frontend/src/Index Sections/ProductsSelection.js
+deleted file mode 100644
+index 0b7f614..0000000
+--- a/Frontend/src/Index Sections/ProductsSelection.js	
++++ /dev/null
+@@ -1,99 +0,0 @@
+-import React from 'react'
+-
+-function ProductsSelection() {
+-  return (
+-    <>
+-      <section className="product_selection1" id="ProductSelection">
+-      <div className="main_product">
+-        <div className="products product_selection">
+-          <div className="product_name">Frappe</div>
+-          <a href="WebsiteFrappe.html" id="openProduct">
+-            <img src={require('../Assets/frappeCover.jpg')} alt="cookie" />
+-          </a>
+-        </div>
+-        <div className="products product_selection">
+-          <div className="product_name">Coffee</div>
+-          <a href="null" id="openProduct">
+-            <img src={require('../Assets/coffeecover.jpg')} alt="pandan" />
+-          </a>
+-        </div>
+-        <div className="products product_selection">
+-          <div className="product_name">Milk Tea</div>
+-          <a href="null" id="openProduct">
+-            <img src={require('../Assets/milkteacover.jpg')} alt="yellow" />
+-          </a>
+-        </div>
+-        <div className="products product_selection">
+-          <div className="product_name">Fruit Tea</div>
+-          <a href="null" id="openProduct">
+-            <img src={require('../Assets/sodacover.jpg')} alt="yellow" />
+-          </a>
+-        </div>
+-      </div>
+-      <button className="open-button" onclick="openMenu()">
+-        View our menu
+-      </button>
+-      <div className="form-popup" id="openForm">
+-        <form action="#" className="form-container">
+-          <div className="menu">
+-            <h1 className="menu-board">Menu</h1>
+-            <div className="menu-row">
+-              <div className="menu-section">
+-                <h2 className="menu-name">coffee</h2>
+-                <ul>
+-                  <li>Carame Macchiato</li>
+-                  <li>Americano</li>
+-                  <li>Spanish Latte</li>
+-                  <li>Vanilla Latte</li>
+-                  <li>Latte</li>
+-                  <li>French Vanilla</li>
+-                  <li>Caffe Mocha</li>
+-                </ul>
+-              </div>
+-              <div className="menu-section">
+-                <h2 className="menu-name">frappe</h2>
+-                <ul>
+-                  <li>Chocolate</li>
+-                  <li>Dark Mocha</li>
+-                  <li>Matcha</li>
+-                  <li>Salted Caramel</li>
+-                  <li>Strawberry &amp; Cream</li>
+-                  <li>Cookies &amp; Cream</li>
+-                </ul>
+-              </div>
+-            </div>
+-            <div className="menu-row">
+-              <div className="menu-section">
+-                <h2 className="menu-name">Milktea</h2>
+-                <ul>
+-                  <li>Okinawa</li>
+-                  <li>Winter Melon</li>
+-                  <li>Hokaido</li>
+-                  <li>Dark Choco</li>
+-                  <li>Salted Caramel</li>
+-                  <li>Cookies &amp; Cream</li>
+-                </ul>
+-              </div>
+-              <div />
+-              <div className="menu-section">
+-                <h2 className="menu-name">Fruit Soda</h2>
+-                <ul>
+-                  <li>Green Apple</li>
+-                  <li>Lychee</li>
+-                  <li>Strawberry</li>
+-                  <li>Blue Lemonade</li>
+-                </ul>
+-              </div>
+-            </div>
+-            <button type="button" className="btn cancel" onclick="closeForm()">
+-              x
+-            </button>
+-          </div>
+-        </form>
+-      </div>
+-    </section>
+-    </>
+-  )
+-}
+-
+-export default ProductsSelection
+\ No newline at end of file
+diff --git a/Frontend/src/WebsiteCafe.css b/Frontend/src/WebsiteCafe.css
+index a589c6c..42dcf0b 100644
+--- a/Frontend/src/WebsiteCafe.css
++++ b/Frontend/src/WebsiteCafe.css
+@@ -4,6 +4,10 @@
+   margin: 0;
+   scroll-behavior: smooth;
+ }
++body {
++  overflow: scroll;
++}
++
+ :root{
+   --theme-color1: #ece0d1;
+   --theme-color2: #dbc1ac;
+@@ -50,6 +54,7 @@ header{
+ .navbar li{
+   display: inline-block;
+   cursor: pointer;
++  margin-right: 20px;
+ }
+ .box-bar, .cafe_logo{
+   padding: 0 15px;
+@@ -71,11 +76,12 @@ header{
+   content: '';
+   position: absolute;
+   left: 0;
+-  bottom: -15px;
++  bottom: -5px;
+   width: 100%;
+   height: 2px;
+   background: var(--theme-color5);
+   border-radius: 5px;
++  border-color: #000000;
+   transform: scaleX(0);
+   transition: transform .4s;
+ }
+diff --git a/Frontend/src/WebsiteCafe.js b/Frontend/src/WebsiteCafe.js
+index 42a8bb2..516e505 100644
+--- a/Frontend/src/WebsiteCafe.js
++++ b/Frontend/src/WebsiteCafe.js
+@@ -1,25 +1,277 @@
++import NAVBAR from './Index Sections/NAVBAR'
+ import './WebsiteCafe.css';
+ import './MediaQuery.css'
+-import ProductsSelection from './Index Sections/ProductsSelection';
+-import NAVBAR from './Index Sections/NAVBAR'
+-import HOMEPAGE from './Index Sections/HOMEPAGE'
+-import AboutUs from './Index Sections/AboutUs'
+-import ContactPage from './Index Sections/ContactPage'
+-import Footer from './Index Sections/Footer'
+ 
+-export default function App() {
++
++function WebsiteCafe ({onLogout}) {
+   return (
+ <>
++  <NAVBAR onLogout={onLogout}/>
++  {/* Homepage */}
++  <section className="homepage" id="HomePage">
++        <div className="welcoming_user">
++          <h1>Welcome to GV Cafe</h1>
++          <p>
++            Discover the origins of our cozy café, where the passion for coffee and
++            community blend seamlessly.
++          </p>
++          <a href="#ProductSelection">
++            <div className="view_product">
++              <button type="button">Explore Our Drinks</button>
++            </div>
++          </a>
++        </div>
++        <div className="swiper mySwiper">
++          <div className="bestproduct_title">
++            <h1>Check Our Best Selling Coffee</h1>
++          </div>
++          <div className="swiper-wrapper">
++            <div className="swiper-slide">
++              <img src={require('./Assets/frappe1.png')} alt="" />
++            </div>
++            <div className="swiper-slide">
++              <img src={require('./Assets/coffee1.png')} alt="" />
++            </div>
++            <div className="swiper-slide">
++              <img src={require('./Assets/frappe2.png')} alt="" />
++            </div>
++          </div>
++          <div className="autoplay-progress"></div>
++        </div>
++      </section>
+ 
++  {/* Product Selection */}
++  <section className="product_selection1" id="ProductSelection">
++      <div className="main_product">
++        <div className="products product_selection">
++          <div className="product_name">Frappe</div>
++          <a href="WebsiteFrappe.html" id="openProduct">
++            <img src={require('./Assets/frappeCover.jpg')} alt="cookie" />
++          </a>
++        </div>
++        <div className="products product_selection">
++          <div className="product_name">Coffee</div>
++          <a href="null" id="openProduct">
++            <img src={require('./Assets/coffeecover.jpg')} alt="pandan" />
++          </a>
++        </div>
++        <div className="products product_selection">
++          <div className="product_name">Milk Tea</div>
++          <a href="null" id="openProduct">
++            <img src={require('./Assets/milkteacover.jpg')} alt="yellow" />
++          </a>
++        </div>
++        <div className="products product_selection">
++          <div className="product_name">Fruit Tea</div>
++          <a href="null" id="openProduct">
++            <img src={require('./Assets/sodacover.jpg')} alt="yellow" />
++          </a>
++        </div>
++      </div>
++      <button className="open-button" onclick="openMenu()">
++        View our menu
++      </button>
++      <div className="form-popup" id="openForm">
++        <form action="#" className="form-container">
++          <div className="menu">
++            <h1 className="menu-board">Menu</h1>
++            <div className="menu-row">
++              <div className="menu-section">
++                <h2 className="menu-name">coffee</h2>
++                <ul>
++                  <li>Carame Macchiato</li>
++                  <li>Americano</li>
++                  <li>Spanish Latte</li>
++                  <li>Vanilla Latte</li>
++                  <li>Latte</li>
++                  <li>French Vanilla</li>
++                  <li>Caffe Mocha</li>
++                </ul>
++              </div>
++              <div className="menu-section">
++                <h2 className="menu-name">frappe</h2>
++                <ul>
++                  <li>Chocolate</li>
++                  <li>Dark Mocha</li>
++                  <li>Matcha</li>
++                  <li>Salted Caramel</li>
++                  <li>Strawberry &amp; Cream</li>
++                  <li>Cookies &amp; Cream</li>
++                </ul>
++              </div>
++            </div>
++            <div className="menu-row">
++              <div className="menu-section">
++                <h2 className="menu-name">Milktea</h2>
++                <ul>
++                  <li>Okinawa</li>
++                  <li>Winter Melon</li>
++                  <li>Hokaido</li>
++                  <li>Dark Choco</li>
++                  <li>Salted Caramel</li>
++                  <li>Cookies &amp; Cream</li>
++                </ul>
++              </div>
++              <div />
++              <div className="menu-section">
++                <h2 className="menu-name">Fruit Soda</h2>
++                <ul>
++                  <li>Green Apple</li>
++                  <li>Lychee</li>
++                  <li>Strawberry</li>
++                  <li>Blue Lemonade</li>
++                </ul>
++              </div>
++            </div>
++            <button type="button" className="btn cancel" onclick="closeForm()">
++              x
++            </button>
++          </div>
++        </form>
++      </div>
++    </section>
+ 
++  {/* About Us */}
++  <section className="about_us_two" id="aboutus">
++        <div className="story_of_cafe">
++          <h1>Our Story</h1>
++          <p>
++            Welcome to GV Café, your new favorite spot for good vibes and great
++            coffee! Established in February 2024, our café was created with a simple
++            mission: to be a cozy haven for students and the community.
++            <br />
++            <br />
++            The name GV stands for Good Vibes, and that’s exactly what we aim to
++            bring to everyone who steps through our doors. Located conveniently near
++            schools, we’re here to offer a relaxing space where you can unwind,
++            study, or catch up with friends over a cup of coffee, refreshing drinks,
++            and delicious snacks. <br />
++            <br />
++            At GV Café, it’s not just about the food and drinks it’s about creating
++            an atmosphere where positivity thrives. Whether you’re here for a quick
++            break between classes or a place to recharge, we’ve got you covered.
++            <br />
++            <br />
++            Come visit us and experience the Good Vibes!
++          </p>
++        </div>
++        <div className="cafeinside">
++          <div className="cafehome">
++            <h1>Where Every Sip Feels Like Home</h1>
++            <p>
++              At Cafe Haven, we blend our passion for coffee with a unique
++              atmosphere
++              <br />
++              that invites relaxation and connection.
++            </p>
++          </div>
++          <div className="cafehomeimg">
++            <img src={require('./Assets/cafebackground2.jpg')} alt="" />
++          </div>
++        </div>
++      </section>
+ 
+-  <NAVBAR/>
+-  <HOMEPAGE/>
+-  <ProductsSelection/>
+-  <AboutUs/>
+-  <ContactPage/>
+-  <Footer/>
++  {/* Contact Page */}
++  <section className="contact" id="Contact">
++        <form action="WebsiteCafe" className="container" method="post">
++          <div className="contact-page">
++            <div className="left" />
++            <div className="right">
++              <h2 className="contact-name">Contact Us</h2>
++              <input
++                type="text"
++                className="field"
++                placeholder="Enter Name"
++                id="Name"
++                name="Name"
++                required=""
++              />
++              <input
++                type="email"
++                className="field"
++                placeholder="Enter Email"
++                id="Email"
++                name="Email"
++                required=""
++              />
++              <textarea
++                type="text"
++                className="field"
++                placeholder="Message"
++                id="Message"
++                name="Message"
++                required=""
++                defaultValue={""}
++              />
++              <button className="contact-btn">Send</button>
++            </div>
++          </div>
++        </form>
++      </section>
++  
++  {/* Footer */}
++  <footer className="more_information">
++        <div className="information-links">
++          <div className="documents_cafe">
++            <a href="null">Copyright</a>
++            <a href="null">Privacy Policy</a>
++            <a href="null">FAQ</a>
++          </div>
++          <div className="creditscafe">
++            <p>© GV Cafe 2024, Where Every Coffee Feels Like Home</p>
++          </div>
++        </div>
++        <div className="cafe_logo_footer">
++          <img src={require('./Assets/cafelogo.png')} alt="GV CAFE" />
++        </div>
++        <div className="socmedia-links">
++          <div className="socialmedia_text">
++            <h1>Visit Us</h1>
++            <a href="https://www.google.com/maps/place/GV+CAFE/@14.6190669,120.9666608,861m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3397b500696278fb:0x8265e4970f5fcedc!2sGV+CAFE!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403!3m5!1s0x3397b500696278fb:0x8265e4970f5fcedc!8m2!3d14.6188506!4d120.9688969!16s%2Fg%2F11vsf_9403?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">
++              <lord-icon
++                className="googleicon"
++                src="https://cdn.lordicon.com/rbsqvtgo.json"
++                trigger="morph"
++                state="morph-circle"
++                colors="primary:#ffffff,secondary:#3080e8"
++                style={{ width: 20, height: 20 }}
++              ></lord-icon>
++            </a>
++            <p>1901 franco st tondo manila, Manila, Philippines</p>
++          </div>
++          <div className="social-media-icons">
++            <a href="https://www.facebook.com/profile.php?id=61555611452098">
++              <lord-icon
++                src="https://cdn.lordicon.com/bfoumeno.json"
++                trigger="morph"
++                state="morph-circle"
++                colors="primary:#ffffff,secondary:#3080e8"
++                style={{ width: 30, height: 30 }}
++              ></lord-icon>
++            </a>
++            <a href="https://www.tiktok.com/@gvcafe?fbclid=IwZXh0bgNhZW0CMTAAAR39Sgtpo06l86D_zxzkJpL_P0LFH6D0z5h_5AbWWFQhGPgAlQhuWUt5xwo_aem_5OmquRJTT0_YnvJbMhUysw">
++              <lord-icon
++                src="https://cdn.lordicon.com/zmvgugmh.json"
++                trigger="morph"
++                state="morph-circle"
++                colors="primary:#ffffff,secondary:#000000"
++                style={{ width: 30, height: 30 }}
++              ></lord-icon>
++            </a>
++            <a href="null">
++              <lord-icon
++                src="https://cdn.lordicon.com/ewswvzmw.json"
++                trigger="morph"
++                state="morph-circle"
++                colors="primary:#ffffff,secondary:#e8308c"
++                style={{ width: 30, height: 30 }}
++              ></lord-icon>
++            </a>
++          </div>
++        </div>
++      </footer>
+ </>
+-
+   );
+ }
++
++export default WebsiteCafe;
+diff --git a/Frontend/src/components/ForgotPassword.js b/Frontend/src/components/ForgotPassword.js
+new file mode 100644
+index 0000000..45c34e6
+--- /dev/null
++++ b/Frontend/src/components/ForgotPassword.js
+@@ -0,0 +1,40 @@
++import React, { useState } from 'react';
++import './forgotpassword.css';
++import logo from '../Assets/cafelogo.png';
++
++function ForgotPassword() {
++  const [email, setEmail] = useState('');
++  const [message, setMessage] = useState('');
++
++  const handleResetPassword = (e) => {
++    e.preventDefault();
++    setMessage('A password reset link has been sent to your email.');
++  };
++
++  return (
++    <div className="forgot-password-container">
++      <div className="logo-container">
++        <img src={logo} alt="Logo" className="logo" />
++      </div>
++      <h2>Forgot Password</h2>
++      <p>Please enter your email address to receive a link to reset your password.</p>
++      <form onSubmit={handleResetPassword}>
++        <label htmlFor="email">Email Address</label>
++        <input
++          type="email"
++          id="email"
++          name="email"
++          required
++          value={email}
++          onChange={(e) => setEmail(e.target.value)}
++        />
++        <button type="submit">Send Reset Link</button>
++      </form>
++      {message && <p style={{ color: 'green' }}>{message}</p>}
++
++      <p><a href="/" className="back-to-login">Back to Login</a></p>
++    </div>
++  );
++}
++
++export default ForgotPassword;
+\ No newline at end of file
+diff --git a/Frontend/src/components/Login.js b/Frontend/src/components/Login.js
+new file mode 100644
+index 0000000..423a093
+--- /dev/null
++++ b/Frontend/src/components/Login.js
+@@ -0,0 +1,76 @@
++import React, { useState } from 'react';
++import './login.css';
++import cafelogo from '../Assets/cafelogo.png';
++
++function Login({ onLoginSuccess }) { // Receive the callback as a prop
++  const [username, setUsername] = useState('');
++  const [password, setPassword] = useState('');
++  const [message, setMessage] = useState('');
++
++  const handleLogin = (event) => {
++    event.preventDefault();
++    if (username === 'kurtmarquez238@gmail.com' && password === '123') {
++      alert('Login success!');
++      onLoginSuccess(); // Call the callback to update login status in AuthContainer
++    } else {
++      setMessage('Invalid username or password');
++    }
++  };
++
++  const goToForgotPassword = (event) => {
++    event.preventDefault(); // Prevent default link behavior
++    window.history.pushState({}, '', '/forgotpassword');
++  };
++
++  const goToSignUp = (event) => {
++    event.preventDefault();
++    window.history.pushState({}, '', '/signup');
++  };
++
++  return (
++    <div className="login-container">
++      <div className="logo-container">
++        <img src={cafelogo} alt="Logo" className="logo" />
++      </div>
++      <h2>Login</h2>
++      <form onSubmit={handleLogin}>
++        <label htmlFor="username">Username</label>
++        <input
++          type="text"
++          id="username"
++          name="username"
++          required
++          value={username}
++          onChange={(e) => setUsername(e.target.value)}
++        />
++
++        <label htmlFor="password">Password</label>
++        <input
++          type="password"
++          id="password"
++          name="password"
++          required
++          value={password}
++          onChange={(e) => setPassword(e.target.value)}
++        />
++
++        <button type="submit" className="login-btn">
++          Login
++        </button>
++        {message && <p style={{ color: 'red' }}>{message}</p>}
++      </form>
++
++      <a href="/forgotpassword" onClick={goToForgotPassword} className="forgot-password">Forgot Password?</a>
++
++      <div className="signup-container">
++        <p>
++          Don't have an account? <a href="/signup" onClick={goToSignUp} className="signup-btn">Sign Up</a>
++        </p>
++      </div>
++    </div>
++
++    
++  );
++}
++
++export default Login;
+\ No newline at end of file
+diff --git a/Frontend/src/components/SignUp.js b/Frontend/src/components/SignUp.js
+new file mode 100644
+index 0000000..81d0e39
+--- /dev/null
++++ b/Frontend/src/components/SignUp.js
+@@ -0,0 +1,81 @@
++import React, { useState } from 'react';
++import './login.css'; // Using login.css for basic styling
++import logo from '../Assets/cafelogo.png';
++
++function SignUp() {
++  const [username, setUsername] = useState('');
++  const [email, setEmail] = useState('');
++  const [password, setPassword] = useState('');
++  const [confirmPassword, setConfirmPassword] = useState('');
++  const [message, setMessage] = useState('');
++
++  const handleSignUp = () => {
++    if (password !== confirmPassword) {
++      setMessage('Passwords do not match!');
++    } else {
++      alert('Signup Successful!');
++      window.history.pushState({}, '', '/'); // Navigate back to Login page
++    }
++  };
++
++  return (
++    <div className="login-container">
++      <div className="logo-container">
++        <img src={logo} alt="Logo" className="logo" />
++      </div>
++      <h2>Sign Up</h2>
++      <form onSubmit={(e) => e.preventDefault()}>
++        <label htmlFor="username">Username</label>
++        <input
++          type="text"
++          id="username"
++          name="username"
++          required
++          value={username}
++          onChange={(e) => setUsername(e.target.value)}
++        />
++
++        <label htmlFor="email">Email</label>
++        <input
++          type="email"
++          id="email"
++          name="email"
++          required
++          value={email}
++          onChange={(e) => setEmail(e.target.value)}
++        />
++
++        <label htmlFor="password">Password</label>
++        <input
++          type="password"
++          id="password"
++          name="password"
++          required
++          value={password}
++          onChange={(e) => setPassword(e.target.value)}
++        />
++
++        <label htmlFor="confirm-password">Confirm Password</label>
++        <input
++          type="password"
++          id="confirm-password"
++          name="confirm-password"
++          required
++          value={confirmPassword}
++          onChange={(e) => setConfirmPassword(e.target.value)}
++        />
++
++        <button type="button" className="login-btn" onClick={handleSignUp}>
++          Sign Up
++        </button>
++        {message && <p style={{ color: 'red' }}>{message}</p>}
++      </form>
++
++      <p>
++        Already have an account? <a href="/" >Login</a>
++      </p>
++    </div>
++  );
++}
++
++export default SignUp;
+\ No newline at end of file
+diff --git a/Frontend/src/components/forgotpassword.css b/Frontend/src/components/forgotpassword.css
+new file mode 100644
+index 0000000..a7b5974
+--- /dev/null
++++ b/Frontend/src/components/forgotpassword.css
+@@ -0,0 +1,138 @@
++body {
++  margin: 0;
++  font-family: 'Arial', sans-serif;
++  display: flex;
++  flex-direction: column;
++  justify-content: flex-start;
++  align-items: center;
++  height: 100vh;
++  position: relative;
++  background: linear-gradient(to right, #d2a679, #e6c7a1); /* Beige to Light Brown Gradient */
++}
++
++
++@keyframes gradientAnimation {
++  0% {
++      background-position: 0% 50%;
++  }
++  50% {
++      background-position: 100% 50%;
++  }
++  100% {
++      background-position: 0% 50%;
++  }
++}
++
++
++.logo-container {
++  display: flex;
++  justify-content: center;
++  align-items: center;
++  width: 100%; 
++  margin-bottom: 20px; 
++}
++
++.logo {
++  width: 120px; 
++  height: auto;
++  transition: transform 0.3s ease-in-out;
++}
++
++.logo:hover {
++  transform: scale(1.1);
++}
++
++
++.forgot-password-container {
++  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
++  padding: 40px 30px;
++  border-radius: 15px;
++  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
++  text-align: center;
++  width: 100%;
++  max-width: 400px;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  transform: translateY(20px);
++  opacity: 0;
++  animation: fadeIn 0.6s ease-out forwards;
++}
++
++
++@keyframes fadeIn {
++  from {
++      opacity: 0;
++      transform: translateY(20px);
++  }
++  to {
++      opacity: 1;
++      transform: translateY(0);
++  }
++}
++
++
++label {
++  font-size: 14px;
++  color: #333;
++  text-align: center; /* Center label */
++  margin-top: 10px;
++  width: 100%;
++}
++
++input {
++  padding: 15px;
++  margin-bottom: 10px;
++  border: 1px solid #ccc;
++  border-radius: 10px;
++  font-size: 16px;
++  width: 100%;
++  max-width: 300px;
++  box-sizing: border-box;
++  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
++}
++
++input:focus {
++  border-color: #0077b6;
++  box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
++  outline: none;
++  transform: translateY(-2px);
++}
++
++
++button {
++  padding: 15px;
++  background-color: #00b4d8;
++  color: white;
++  border: none;
++  border-radius: 10px;
++  cursor: pointer;
++  font-size: 18px;
++  width: 100%;
++  max-width: 300px;
++  transition: background-color 0.3s ease, transform 0.3s ease;
++}
++
++button:hover {
++  background-color: #0077b6;
++  transform: translateY(-3px);
++}
++
++button:active {
++  transform: translateY(1px);
++}
++
++/* Back to Login Link */
++.back-to-login {
++  font-size: 16px;
++  color: #0066cc;
++  text-decoration: none;
++  margin-top: 20px;
++  transition: color 0.3s ease, transform 0.3s ease;
++}
++
++.back-to-login:hover {
++  text-decoration: underline;
++  color: #00b4d8;
++  transform: translateY(-2px);
++}
+\ No newline at end of file
+diff --git a/Frontend/src/components/login.css b/Frontend/src/components/login.css
+new file mode 100644
+index 0000000..45cf76c
+--- /dev/null
++++ b/Frontend/src/components/login.css
+@@ -0,0 +1,247 @@
++body {
++  margin: 0;
++  font-family: 'Arial', sans-serif;
++  display: flex;
++  flex-direction: column;
++  justify-content: center;
++  align-items: center;
++  height: 100vh;
++  position: relative;
++  background: linear-gradient(to right, #d2a679, #e6c7a1); /* Beige to Light Brown Gradient */
++}
++
++@keyframes gradientAnimation {
++  0% {
++      background-position: 0% 50%;
++  }
++  50% {
++      background-position: 100% 50%;
++  }
++  100% {
++      background-position: 0% 50%;
++  }
++}
++
++::after {
++  content: "";
++  position: absolute;
++  top: 0;
++  left: 0;
++  width: 100%;
++  height: 100%;
++  background: url('https://www.transparenttextures.com/patterns/bright-square.png'); /* Subtle pattern overlay */
++  opacity: 0.1; 
++  pointer-events: none; 
++}
++
++.logo-container {
++  margin-bottom: 30px;
++}
++
++.logo {
++  width: 180px;
++  height: auto;
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
++  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, filter 0.5s ease-in-out;
++}
++
++/* Add hover effect */
++.logo:hover {
++  transform: scale(1.1) rotate(5deg) translateY(-5px); /* Slight rotation, scale up, and lift */
++  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
++  filter: drop-shadow(0px 0px 10px rgba(235, 230, 226, 0.8)); /* Soft glow effect */
++}
++
++/* Floating animation for a dynamic effect */
++@keyframes floatAnimation {
++  0% { transform: translateY(0); }
++  50% { transform: translateY(-5px); }
++  100% { transform: translateY(0); }
++}
++
++/* Apply floating effect on hover */
++.logo:hover {
++  animation: floatAnimation 1.5s infinite ease-in-out;
++}
++
++.login-container {
++  background: linear-gradient(to bottom, #f7e0c7, #e6c7a1); /* Soft coffee gradient */
++  padding: 50px 40px;
++  border-radius: 20px;
++  box-shadow: 0 15px 35px rgba(90, 62, 43, 0.3); /* Coffee brown shadow */
++  text-align: center;
++  width: 100%;
++  max-width: 400px;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  border: 3px solid #c99c71; /* Warm brown border */
++  animation: fadeIn 0.6s ease-out forwards;
++  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
++}
++
++/* Hover effect for interactive feel */
++.login-container:hover {
++  transform: translateY(-5px);
++  box-shadow: 0 20px 40px rgba(90, 62, 43, 0.4);
++}
++
++@keyframes fadeIn {
++  from {
++      opacity: 0;
++      transform: translateY(20px);
++  }
++  to {
++      opacity: 1;
++      transform: translateY(0);
++  }
++}
++
++h2 {
++  margin-bottom: 20px;
++  font-size: 28px;
++  color: #0077b6;
++  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
++  animation: slideIn 0.6s ease-out;
++}
++
++@keyframes slideIn {
++  from {
++      transform: translateY(-20px);
++      opacity: 0;
++  }
++  to {
++      transform: translateY(0);
++      opacity: 1;
++  }
++}
++
++label {
++  font-size: 16px;
++  font-weight: bold;
++  text-align: left;
++  margin-bottom: 5px;
++  color: #5a3e2b; /* Coffee brown color */
++  text-transform: uppercase;
++  letter-spacing: 1px;
++  display: block;
++  transition: color 0.3s ease-in-out;
++  position: relative;
++  font-family: 'Poppins', sans-serif;
++}
++
++
++label::after {
++  content: "";
++  display: block;
++  width: 0%;
++  height: 2px;
++  background-color: #d2a679; /* Beige underline */
++  transition: width 0.3s ease-in-out;
++}
++
++
++label:hover::after {
++  width: 100%;
++}
++label:hover {
++  color: #8b5e3b; /* Darker brown on hover */
++}
++
++input {
++  padding: 15px;
++  margin-bottom: 20px;
++  border: 1px solid #ccc;
++  border-radius: 10px;
++  font-size: 16px;
++  width: 100%;
++  box-sizing: border-box;
++  background-color: #f5f5f5;
++  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
++}
++
++input:focus {
++  border-color: #0077b6;
++  box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
++  outline: none;
++  transform: translateY(-2px);
++}
++
++button {
++  padding: 15px;
++  background-color: #00b4d8;
++  color: white;
++  border: none;
++  border-radius: 10px;
++  cursor: pointer;
++  font-size: 18px;
++  width: 100%;
++  transition: background-color 0.3s ease, transform 0.3s ease;
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
++}
++
++button:hover {
++  background-color: #0077b6;
++  transform: translateY(-3px);
++}
++
++button:active {
++  transform: translateY(1px);
++}
++
++#message {
++  color: red;
++  display: none;
++  margin-top: 10px;
++}
++
++
++.forgot-password {
++  margin-top: 15px;
++  font-size: 14px;
++  color: #0077b6;
++  text-decoration: none;
++  position: relative; 
++  display: inline-block;
++  transition: color 0.3s ease, transform 0.3s ease;
++}
++
++.forgot-password::after {
++  content: "";
++  position: absolute;
++  bottom: -2px;
++  left: 0;
++  width: 0;
++  height: 2px;
++  background-color: #00b4d8;
++  transition: width 0.3s ease;
++}
++
++.forgot-password:hover {
++  text-decoration: underline;
++  color: #00b4d8;
++  transform: translateY(-2px); /* Lift effect on hover */
++}
++
++.forgot-password:hover::after {
++  width: 100%;
++}
++
++@media (max-width: 600px) {
++  .login-container {
++      padding: 30px;
++  }
++
++  .logo {
++      width: 150px;
++  }
++
++  h2 {
++      font-size: 24px;
++  }
++}
++
++.signup-container {
++  text-align: center;
++  margin-top: 20px;
++}
+\ No newline at end of file
+diff --git a/Frontend/src/index.js b/Frontend/src/index.js
+index 403bf29..ac11f7e 100644
+--- a/Frontend/src/index.js
++++ b/Frontend/src/index.js
+@@ -1,7 +1,7 @@
+ import React from 'react';
+ import ReactDOM from 'react-dom/client';
+ import './index.css';
+-import App from './WebsiteCafe.js';
++import App from './AuthPage.js';
+ import reportWebVitals from './reportWebVitals';
+ 
+ const root = ReactDOM.createRoot(document.getElementById('root'));
