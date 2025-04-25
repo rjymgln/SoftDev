@@ -1,0 +1,238 @@
+
+
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/bright-square.png'); /* Subtle pattern overlay */
+  opacity: 0.1; 
+  pointer-events: none; 
+}
+
+
+.logo-container {
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+/* Add hover effect */
+.logo:hover {
+  transform: scale(1.1) rotate(5deg) translateY(-5px); /* Slight rotation, scale up, and lift */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(0px 0px 10px rgba(235, 230, 226, 0.8)); /* Soft glow effect */
+}
+
+/* Floating animation for a dynamic effect */
+@keyframes floatAnimation {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+/* Apply floating effect on hover */
+.logo:hover {
+  animation: floatAnimation 1.5s infinite ease-in-out;
+}
+
+.login-container {
+  background: linear-gradient(to bottom, #f7e0c7, #e6c7a1); /* Soft coffee gradient */
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(90, 62, 43, 0.3); /* Coffee brown shadow */
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #c99c71; /* Warm brown border */
+  animation: fadeIn 0.6s ease-out forwards;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for interactive feel */
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(90, 62, 43, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #0077b6;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #5a3e2b; /* Coffee brown color */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+label::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #d2a679; /* Beige underline */
+  transition: width 0.3s ease-in-out;
+}
+
+
+label:hover::after {
+  width: 100%;
+}
+label:hover {
+  color: #8b5e3b; /* Darker brown on hover */
+}
+
+input {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+input:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+button {
+  padding: 15px;
+  background-color: #00b4d8;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #0077b6;
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#message {
+  color: red;
+  display: none;
+  margin-top: 10px;
+}
+
+
+.forgot-password {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #0077b6;
+  text-decoration: none;
+  position: relative; 
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.forgot-password::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00b4d8;
+  transition: width 0.3s ease;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  color: #00b4d8;
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.forgot-password:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+      padding: 30px;
+  }
+
+  .logo {
+      width: 150px;
+  }
+
+  h2 {
+      font-size: 24px;
+  }
+}
+
+.signup-container {
+  text-align: center;
+  margin-top: 20px;
+}
