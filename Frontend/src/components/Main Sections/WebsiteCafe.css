@@ -162,7 +162,7 @@ header{
   justify-content: space-around;
   align-items: center;
   overflow: hidden;
-  cursor: grab;
+  /* cursor: grab; */
 }
 .swiper-wrapper {
   display: flex;  

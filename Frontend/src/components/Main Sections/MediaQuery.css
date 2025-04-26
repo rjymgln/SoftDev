@@ -38,7 +38,8 @@
 }
 
 .menu-toggle {
-    width: 30%;
+    width: 90px;
+    margin-right: 2rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -63,7 +64,7 @@
 }
 
 .welcoming_user {
-    top: -50px;
+    height: 5%;
     left: 0;
 }
 
@@ -72,7 +73,7 @@
 }
 
 .welcoming_user p {
-    font-size: .8rem;
+    font-size: 2rem;
     text-align: center;
     padding-top: 20px;
     margin: 0 auto; 
@@ -86,6 +87,7 @@
 }
 
 /* Home Product Images */
+
 .swiper-slide img {
     width: 150px;
     height: 250px;
@@ -302,35 +304,32 @@ footer {
     text-align: center;
 }
 .welcoming_user {
-    top: -30px;
-    left: 0;
-    margin: 0 auto;
+    position: relative;
+    height: 10vh;
 }
 .welcoming_user h1 {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .welcoming_user p {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
-    padding-top: 20px;
-    margin: 0 auto; 
+    margin-top: 20px;
+    width: 60%;
 }
 .view_product button {
     display: none;
 }
 
 .bestproduct_title h1{
-    position: absolute;
+    position: relative;
     font-size: 2rem;
-    top: 300px;
-    left: 100px;
 }
 .view_product button {
     display: none;
 }
 .swiper-wrapper img{
-    width: 300px;
+    width: 200px;
     height: auto;
 }
 
@@ -340,9 +339,9 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
     margin: 0;
-    padding: 0;
+    padding: 10px;
 }
 .product_selection img {
     width: 350px;
