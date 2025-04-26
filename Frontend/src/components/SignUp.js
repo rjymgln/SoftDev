@@ -12,12 +12,34 @@ function SignUp() {
   const navigate = useNavigate();  // Initialize useNavigate()
 
   const handleSignUp = () => {
+    if (!username || !email || !password) {
+      setMessage('Please fill in all required fields.');
+      return;
+    }
+
     if (password !== confirmPassword) {
       setMessage('Passwords do not match!');
-    } else {
-      alert('Signup Successful!');
-      navigate('/');  // Navigate back to Login page
+      return;
     }
+
+    const newUser = { username, email, password };
+    const storedUsers = localStorage.getItem('users');
+    let users = storedUsers ? JSON.parse(storedUsers) : [];
+
+    // Check if the username or email already exists (optional but recommended)
+    if (users.some(user => user.username === username)) {
+      setMessage('Username already exists.');
+      return;
+    }
+    if (users.some(user => user.email === email)) {
+      setMessage('Email already exists.');
+      return;
+    }
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    setMessage('Signup Successful! You can now log in.');
+    navigate('/'); // Navigate back to Login page
   };
 
   return (

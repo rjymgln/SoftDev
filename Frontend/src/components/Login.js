@@ -10,11 +10,25 @@ function Login() {
   const navigate = useNavigate();  
 
   const handleLogin = () => {
-    if (username === 'kurtmarquez238@gmail.com' && password === '123') {
-      
-      navigate('./WebsiteCafe');  
-    } else {
-      setMessage('Invalid username or password');
+    const storedUsers = localStorage.getItem('users');
+
+    if (storedUsers){
+      try{
+        const users = JSON.parse(storedUsers);
+        const userExists = users.some(user => user.username === username && user.password === password);
+        localStorage.setItem('activeUser', username); // Store the logged-in username
+
+        if (userExists){
+          setMessage('Login Succesful!');
+          navigate('/WebsiteCafe') 
+        } else{
+          setMessage('Invalid Username or Password');
+        }
+      } catch (error) {
+        console.error('User data parse error')
+      }
+    } else{
+      setMessage('No user accounts found.');
     }
   };
 

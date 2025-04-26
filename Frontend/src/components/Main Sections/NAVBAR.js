@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function NAVBAR({onLogout}) {
+  const navigate = useNavigate
   const handleLogoutClick = () => {
-    onLogout(); // Go back to login page
+    localStorage.removeItem('activeUser'); // Clear the active session
+    navigate('/login');
   };
   return (
     <>
