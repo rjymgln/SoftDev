@@ -1,4 +1,5 @@
 import React from 'react'
+import MySwiper from './MySwiper'
 
 export default function Homepage() {
   return (
@@ -15,23 +16,7 @@ export default function Homepage() {
           </div>
         </a>
       </div>
-      <div className="swiper mySwiper">
-        <div className="bestproduct_title">
-          <h1>Check Our Best Selling Coffee</h1>
-        </div>
-        <div className="swiper-wrapper">
-          <div className="swiper-slide">
-            <img src={require('../../Assets/frappe1.png')} alt="" />
-          </div>
-          <div className="swiper-slide">
-            <img src={require('../../Assets/coffee1.png')} alt="" />
-          </div>
-          <div className="swiper-slide">
-            <img src={require('../../Assets/frappe2.png')} alt="" />
-          </div>
-        </div>
-        <div className="autoplay-progress"></div>
-      </div>
+      <MySwiper />
     </section>
   )
 }
