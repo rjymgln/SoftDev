@@ -13,6 +13,7 @@ body{
   justify-content: center; 
   align-items: center; 
   min-height: 100vh;
+  width: 100vw;
   background: linear-gradient(to right, #d2a679, #e6c7a1);
 }
 
@@ -101,7 +102,7 @@ header{
   display: none;
 }
 /*HOME PAGE*/
-.homepage, .product_selection{
+.homepage {
   height: 100vh;
   
 }
@@ -109,13 +110,13 @@ header{
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
-
+  max-width: 100vw;
 }
 .welcoming_user{
+  padding-left: 5%;
   position: relative;
-  top: 100px;
-  left: 100px;
+  justify-content: center;
+  align-self: center;
   color: var(--theme-color6);
   font-family: Merienda;
   font-style: bold;
@@ -139,8 +140,8 @@ header{
 }
 .view_product{
   position: relative;
-  top: 100px;
-  left: 20px;
+  margin-top: 5rem;
+  margin-left: 4rem;
 }
 .view_product button{
   background-color: var(--theme-color1);
@@ -165,11 +166,15 @@ header{
   /* cursor: grab; */
 }
 .swiper-wrapper {
+
+  width: 60%;
   display: flex;  
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .swiper-slide {
+  height: auto;
+  width: 20%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -184,8 +189,7 @@ header{
   display: block;
   width: 250px;
   height: 300px; 
-  object-fit: cover;
-  transform: rotate(10deg);
+  object-fit: contain;
 }
 .swiper-slide-active{
   opacity: 1;
@@ -217,11 +221,13 @@ header{
 
 .product_selection1{
   position: relative;
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: fit-content;
+  padding: 3rem 2rem;
   
 }
 .product_selection{
@@ -233,8 +239,13 @@ header{
 .main_product{
   position: relative;
   display: flex;
-  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 50px;
+  height: auto;
+  width:  85%;
+  margin: 4rem;
 }
 .product_selection img{
   width: 250px;
@@ -243,11 +254,11 @@ header{
   border-radius: 20px;
 }
 .product_selection img:hover{
+  filter: drop-shadow(-10px 15px 10px var(--theme-color6));
   transform: scale(1.1);
 }
 .product_name{
-/*   position: absolute;
- */  font-family: "Zilla Slab", serif;
+  font-family: "Zilla Slab", serif;
   color: var(--theme-color4);
   padding: 10px;
   border-radius: 5px;
@@ -269,7 +280,7 @@ header{
   border-radius: 10px; 
   display: flex;
   justify-content: center;
-  bottom: 150px;
+  margin-top: 4rem;
 }
 
 .menu{
@@ -352,7 +363,7 @@ header{
 }
 
 
- .btn {
+.btn {
   position: absolute; 
   top: 10px; 
   right: 10px; 
@@ -370,11 +381,11 @@ header{
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px var(--theme-color6);
- }
+}
 
  .btn:hover{
   background-color: bisque ;
- }
+}
 
 
 
@@ -396,14 +407,16 @@ header{
 }
 .about_us_two{
   background-color: var(--theme-color3);
-  height: 80vh;
+  height: fit-content;
   font-family: "Tenor Sans", sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 4rem 0;
 }
 .story_of_cafe, .cafeinside{
   position: relative;
-  top: 10%;
+  margin-top: 4rem;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,7 +458,8 @@ header{
 
 /*Contact Page*/
 .contact{
-  height: 80vh;
+  height: 100vh;
+  padding: 0 3rem;
   background: linear-gradient(to bottom, var(--theme-color3) 50%, var(--theme-color4) 100%);
 
 }

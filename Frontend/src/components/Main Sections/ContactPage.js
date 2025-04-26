@@ -44,7 +44,7 @@ function ContactPage() {
             <textarea
               type="text"
               className="field"
-              placeholder="MESSAGE"
+              placeholder="Message"
               id="Message"
               name="Message"
               required=""

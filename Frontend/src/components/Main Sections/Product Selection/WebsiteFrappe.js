@@ -1,6 +1,14 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
+import './WebsiteFrappe.css'
 
 function Frappe() {
+  const navigate = useNavigate
+    const handleLogoutClick = () => {
+      localStorage.removeItem('activeUser'); // Clear the active session
+      navigate('/login');
+    };
+    
   return(
 <> 
     <header className="top_bar">
@@ -38,6 +46,9 @@ function Frappe() {
             <a href="WebsiteCafe.html#Contact" className="box-bar">
               CONTACT
             </a>
+          </li>
+          <li>
+            <a href="/" onClick={handleLogoutClick}>LOGOUT</a>
           </li>
         </ul>
       </nav>

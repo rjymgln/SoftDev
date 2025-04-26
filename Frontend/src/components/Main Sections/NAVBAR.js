@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function NAVBAR({onLogout}) {
+export default function NAVBAR() {
   const navigate = useNavigate
   const handleLogoutClick = () => {
     localStorage.removeItem('activeUser'); // Clear the active session
@@ -46,7 +46,8 @@ export default function NAVBAR({onLogout}) {
                 </a>
               </li>
               <li>
-                <a href="/" onClick={handleLogoutClick}>LOGOUT</a>              </li>
+                <a href="/" onClick={handleLogoutClick}>LOGOUT</a>
+              </li>
             </ul>
           </nav>
         </div>
