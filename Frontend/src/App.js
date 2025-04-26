@@ -4,6 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';  // Correct import path
 import ForgotPassword from './components/ForgotPassword';  // Correct import path
 import WebsiteCafe from './components/Main Sections/WebsiteCafe';
+import Frappe from './components/Main Sections/Product Selection/WebsiteFrappe'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path='/WebsiteCafe' element= {<WebsiteCafe/>} />
+        <Route path='/frappe' element= {<Frappe/>} />
       </Routes>
     </Router>
   );

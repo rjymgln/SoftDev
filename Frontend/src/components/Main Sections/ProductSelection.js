@@ -1,14 +1,25 @@
-import React from 'react'
+import React, {useState}from 'react'
+import {Link} from "react-router-dom"
 
 function ProductSelection() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const openMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <section className="product_selection1" id="ProductSelection">
       <div className="main_product">
         <div className="products product_selection">
           <div className="product_name">Frappe</div>
-          <a href="WebsiteFrappe.html" id="openProduct">
+          <Link id='openProduct' to="/frappe" > 
             <img src={require('../../Assets/frappeCover.jpg')} alt="cookie" />
-          </a>
+          </Link>
         </div>
         <div className="products product_selection">
           <div className="product_name">Coffee</div>
@@ -29,11 +40,10 @@ function ProductSelection() {
           </a>
         </div>
       </div>
-      <button className="open-button" onclick="openMenu()">
+      <button className="open-button" onClick={openMenu}>
         View our menu
       </button>
-      <div className="form-popup" id="openForm">
-        <form action="#" className="form-container">
+      <div className={`form-popup ${isMenuOpen ? 'open' : ''}`} id="openForm">        <form action="#" className="form-container">
           <div className="menu">
             <h1 className="menu-board">Menu</h1>
             <div className="menu-row">
@@ -84,7 +94,7 @@ function ProductSelection() {
                 </ul>
               </div>
             </div>
-            <button type="button" className="btn cancel" onclick="closeForm()">
+            <button type="button" className="btn cancel" onClick={closeMenu}>
               x
             </button>
           </div>

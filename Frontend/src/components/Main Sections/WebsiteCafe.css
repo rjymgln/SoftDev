@@ -255,6 +255,7 @@ header{
 }
 
 /*MENU*/
+
 .open-button {
   position: relative;
   background-color: antiquewhite;
@@ -320,27 +321,36 @@ header{
 }
 
 .form-popup {
-  height: 70%;
-  display: none;
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 40px;
-  z-index: 9;
-  cursor: pointer;
-  position: fixed;
-  bottom: 5%;
-  
+  display: none; /* Initially hidden */
+  position: fixed; /* To overlay other content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Semi-transparent background */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  justify-content: center; /* Center the menu horizontally */
+  align-items: center; /* Center the menu vertically */
+}
+
+.form-popup.open {
+  display: flex; /* Make it visible */
+  opacity: 1; /* Fade in */
+  visibility: visible; /* Make it visible */
+  transition: opacity 0.5s ease, visibility 0s 0s; /* Fade in instantly visible */
 }
 
 .form-container {
-  max-width: 100%;
-  height: 100%;
-  width: 100%;
-  padding: 10px 200px 0 200px;
-  border: none;
-  text-align: center;
-  font-size: 20px;
+  background-color: var(--theme-color1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  color: var(--theme-color5);
 }
+
 
  .btn {
   position: absolute; 
@@ -366,16 +376,7 @@ header{
   background-color: bisque ;
  }
 
- #openForm {
-  visibility: none;
-  opacity: 0; 
-  transition: opacity 0.5s ease;
-}
 
-#openForm.visible {
-  display: block;
-  opacity: 1;
-}
 
 /*About us Page*/
 .cafesome_info {
@@ -428,6 +429,7 @@ header{
 .story_of_cafe{
   text-align: justify;
   p{
+      width: 75%;
       border-radius: 20px;
       margin: 0 40px 0 40px;
       padding: 50px;
@@ -487,7 +489,7 @@ header{
 }
 
 .right{
-  padding: 25px 40px;
+  padding: 25px 15%;
 }
 
 .contact-name{
@@ -513,6 +515,8 @@ textarea{
   height: 200px;
   resize: none;
 }
+
+
 
 .field{
   width: 100%;
