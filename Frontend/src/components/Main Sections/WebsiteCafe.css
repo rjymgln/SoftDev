@@ -226,6 +226,7 @@ header{
 }
 .product_selection{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -245,9 +246,8 @@ header{
   transform: scale(1.1);
 }
 .product_name{
-  position: absolute;
-  top: 100px;
-  font-family: "Zilla Slab", serif;
+/*   position: absolute;
+ */  font-family: "Zilla Slab", serif;
   color: var(--theme-color4);
   padding: 10px;
   border-radius: 5px;
@@ -547,7 +547,7 @@ textarea{
   width: 100%;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
-  background-color: whitesmoke;
+  background-color: var(--theme-color3);
   cursor: pointer;
   outline: none;
   border: 0.5px burlywood solid;
@@ -556,7 +556,8 @@ textarea{
 }
 
 .contact-btn:hover{
-  background-color: var(--theme-color3);
+  color: var(--theme-color2);
+  background-color: var(--theme-color4);
 }
 /* FOOTER */
 footer{

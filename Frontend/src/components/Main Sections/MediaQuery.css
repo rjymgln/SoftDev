@@ -6,7 +6,7 @@
         align-items: center;
     }
 }
-   
+
 @media screen and (max-width: 768px) {
 .top_bar {
     flex-direction: row;
@@ -38,6 +38,7 @@
 }
 
 .menu-toggle {
+    width: 30%;
     background: none;
     border: none;
     cursor: pointer;
@@ -82,8 +83,8 @@
 
 .bestproduct_title h1{
     font-size: 1.5rem;
-    top: 300px;
 }
+
 /* Home Product Images */
 .swiper-slide img {
     width: 150px;
@@ -121,6 +122,7 @@
 }
 
 .product_name {
+    position: static;
     font-size: 1.5rem;
     padding: 100px 0 0 0 ;
     text-align: center;
@@ -336,7 +338,7 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
@@ -357,7 +359,6 @@ footer {
 }
 /* About Us */
 .about_us_two {
-    margin-top: 100px;
     grid-template-columns: 1fr;
     text-align: center;
 }
@@ -378,6 +379,7 @@ footer {
     top: 50px;
 }
 .cafeinside img {
+    display: none;
     height: 300px;
     width: auto;
 }
