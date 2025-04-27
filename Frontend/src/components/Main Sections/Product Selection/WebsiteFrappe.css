@@ -13,6 +13,7 @@
   --theme-color6: #000000;
   --theme-color7: #ffffff;
 }
+
 /* NAVBAR */
 header{
   padding: 4px 10px;
@@ -82,6 +83,10 @@ header{
 }
 
 /* FRAPPE */
+
+.Frappe {
+  height: 100vh;
+}
 
 .frappe_title {
   font-style: italic;

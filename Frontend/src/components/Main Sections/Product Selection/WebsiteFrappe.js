@@ -1,7 +1,7 @@
 import React from "react"
-import { useNavigate } from "react-router-dom";
-import './WebsiteFrappe.css'
-
+import { Link, useNavigate } from "react-router-dom";
+/* import './WebsiteFrappe.css'
+ */
 function Frappe() {
   const navigate = useNavigate
     const handleLogoutClick = () => {
@@ -28,27 +28,27 @@ function Frappe() {
       <nav>
         <ul className="links">
           <li>
-            <a href="WebsiteCafe.html#HomePage" className="box-bar">
+            <Link to="/WebsiteCafe" className="box-bar">
               HOME
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="WebsiteCafe.html#ProductSelection" className="box-bar">
+            <Link href="WebsiteCafe.html#ProductSelection" className="box-bar">
               PRODUCT
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="WebsiteCafe.html#aboutus" className="box-bar">
+            <Link href="WebsiteCafe.html#aboutus" className="box-bar">
               ABOUT US
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="WebsiteCafe.html#Contact" className="box-bar">
+            <Link href="WebsiteCafe.html#Contact" className="box-bar">
               CONTACT
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" onClick={handleLogoutClick}>LOGOUT</a>
+            <Link href="/" onClick={handleLogoutClick}>LOGOUT</Link>
           </li>
         </ul>
       </nav>
