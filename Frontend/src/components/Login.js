@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate
-import './login.css'; 
+import '../login.css'; 
 import cafelogo from '../Assets/cafelogo.png';
 
 function Login() {

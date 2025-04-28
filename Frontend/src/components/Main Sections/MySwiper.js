@@ -1,9 +1,8 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/bundle'
+
 function MySwiper() {
-
-
   return (
     <div className="swiper mySwiper">
       <div className="bestproduct_title">

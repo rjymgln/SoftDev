@@ -1,4 +1,12 @@
-
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to right, #d2a679, #e6c7a1);
+}
 
 @keyframes gradientAnimation {
   0% {

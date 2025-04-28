@@ -4,7 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';  // Correct import path
 import ForgotPassword from './components/ForgotPassword';  // Correct import path
 import ProtectedRoute from './components/ProtectedRoute';
-import WebsiteCafe from './components/Main Sections/WebsiteCafe';
+import WebsiteCafe from './components/WebsiteCafe';
 import Frappe from './components/Main Sections/Product Selection/WebsiteFrappe'
 
 function App() {

@@ -258,7 +258,7 @@ header{
 }
 .product_selection img{
   width: 100%;
-  height: 100%;
+  height: auto;
   transition-duration: .3s;
   border-radius: 20px;
 }
@@ -492,7 +492,7 @@ header{
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../Assets/cafebackground1.jpg') center no-repeat;
+  background-image: url('../Assets/cafebackground1.jpg') center no-repeat;
   background-size: cover;
   z-index: -1;
 }
