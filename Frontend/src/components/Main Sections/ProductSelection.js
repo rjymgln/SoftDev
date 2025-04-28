@@ -17,9 +17,9 @@ function ProductSelection() {
       <div className="main_product">
         <div className="products product_selection">
           <div className="product_name">Frappe</div>
-          <Link id='openProduct' to="/frappe" > 
+          <a id='openProduct' href="/frappe" > 
             <img src={require('../../Assets/frappeCover.jpg')} alt="cookie" />
-          </Link>
+          </a>
         </div>
         <div className="products product_selection">
           <div className="product_name">Coffee</div>
@@ -43,7 +43,8 @@ function ProductSelection() {
       <button className="open-button" onClick={openMenu}>
         View our menu
       </button>
-      <div className={`form-popup ${isMenuOpen ? 'open' : ''}`} id="openForm">        <form action="#" className="form-container">
+      <div className={`form-popup ${isMenuOpen ? 'open' : ''}`} id="openForm">       
+        <form action="#" className="form-container">
           <div className="menu">
             <h1 className="menu-board">Menu</h1>
             <div className="menu-row">

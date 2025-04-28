@@ -1,0 +1,143 @@
+diff --git a/Frontend/src/components/Main Sections/MediaQuery.css b/Frontend/src/components/Main Sections/MediaQuery.css
+index 36e2e7e..a55e417 100644
+--- a/Frontend/src/components/Main Sections/MediaQuery.css	
++++ b/Frontend/src/components/Main Sections/MediaQuery.css	
+@@ -95,7 +95,7 @@
+ 
+ /* Product Selection */
+ .product_selection1 {
+-    height: auto;
++    height: fit-content;
+     margin: 0;
+     padding: 0;
+ }
+@@ -336,6 +336,11 @@ footer {
+ }
+ 
+ /* Product Selection */
++.product_selection1 {
++    height: fit-content;
++    margin: 0;
++    padding: 2rem 0;
++}
+ .main_product {
+     position: relative;
+     display: flex;
+@@ -364,7 +369,7 @@ footer {
+ .about_us_two {
+     grid-template-columns: 1fr;
+     text-align: center;
+-    height: fit-content;
++    height: 100vh;
+     padding: 3rem 0;
+ }
+ .ownerimg img{
+diff --git a/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.css b/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.css
+index feb3945..38a6ff9 100644
+--- a/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.css	
++++ b/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.css	
+@@ -83,6 +83,10 @@ header{
+ 
+ /* FRAPPE */
+ 
++.Frappe {
++  height: 100vh;
++}
++
+ .frappe_title {
+   font-style: italic;
+   text-align: center;
+diff --git a/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.js b/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.js
+index 433a896..f6da512 100644
+--- a/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.js	
++++ b/Frontend/src/components/Main Sections/Product Selection/WebsiteFrappe.js	
+@@ -1,7 +1,7 @@
+ import React from "react"
+-import { useNavigate } from "react-router-dom";
+-import './WebsiteFrappe.css'
+-
++import { Link, useNavigate } from "react-router-dom";
++/* import './WebsiteFrappe.css'
++ */
+ function Frappe() {
+   const navigate = useNavigate
+     const handleLogoutClick = () => {
+@@ -28,27 +28,27 @@ function Frappe() {
+       <nav>
+         <ul className="links">
+           <li>
+-            <a href="WebsiteCafe.html#HomePage" className="box-bar">
++            <Link to="/WebsiteCafe" className="box-bar">
+               HOME
+-            </a>
++            </Link>
+           </li>
+           <li>
+-            <a href="WebsiteCafe.html#ProductSelection" className="box-bar">
++            <Link href="WebsiteCafe.html#ProductSelection" className="box-bar">
+               PRODUCT
+-            </a>
++            </Link>
+           </li>
+           <li>
+-            <a href="WebsiteCafe.html#aboutus" className="box-bar">
++            <Link href="WebsiteCafe.html#aboutus" className="box-bar">
+               ABOUT US
+-            </a>
++            </Link>
+           </li>
+           <li>
+-            <a href="WebsiteCafe.html#Contact" className="box-bar">
++            <Link href="WebsiteCafe.html#Contact" className="box-bar">
+               CONTACT
+-            </a>
++            </Link>
+           </li>
+           <li>
+-            <a href="/" onClick={handleLogoutClick}>LOGOUT</a>
++            <Link href="/" onClick={handleLogoutClick}>LOGOUT</Link>
+           </li>
+         </ul>
+       </nav>
+diff --git a/Frontend/src/components/Main Sections/ProductSelection.js b/Frontend/src/components/Main Sections/ProductSelection.js
+index 6577fdd..fc2ea26 100644
+--- a/Frontend/src/components/Main Sections/ProductSelection.js	
++++ b/Frontend/src/components/Main Sections/ProductSelection.js	
+@@ -43,7 +43,8 @@ function ProductSelection() {
+       <button className="open-button" onClick={openMenu}>
+         View our menu
+       </button>
+-      <div className={`form-popup ${isMenuOpen ? 'open' : ''}`} id="openForm">        <form action="#" className="form-container">
++      <div className={`form-popup ${isMenuOpen ? 'open' : ''}`} id="openForm">       
++        <form action="#" className="form-container">
+           <div className="menu">
+             <h1 className="menu-board">Menu</h1>
+             <div className="menu-row">
+diff --git a/Frontend/src/components/Main Sections/WebsiteCafe.css b/Frontend/src/components/Main Sections/WebsiteCafe.css
+index 533a206..3ccff9a 100644
+--- a/Frontend/src/components/Main Sections/WebsiteCafe.css	
++++ b/Frontend/src/components/Main Sections/WebsiteCafe.css	
+@@ -221,12 +221,12 @@ header{
+ 
+ .product_selection1{
+   position: relative;
+-  height: fit-content;
++  height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+-  height: fit-content;
++  flex-wrap: wrap;
+   padding: 3rem 2rem;
+   
+ }
+@@ -407,7 +407,7 @@ header{
+ }
+ .about_us_two{
+   background-color: var(--theme-color3);
+-  height: fit-content;
++  height: 100vh;
+   font-family: "Tenor Sans", sans-serif;
+   display: grid;
+   grid-template-columns: 1fr 1fr;

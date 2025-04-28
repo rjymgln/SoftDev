@@ -1,6 +1,14 @@
 import React from "react"
-
+import { Link, useNavigate } from "react-router-dom";
+/* import './WebsiteFrappe.css'
+ */
 function Frappe() {
+  const navigate = useNavigate
+    const handleLogoutClick = () => {
+      localStorage.removeItem('activeUser'); // Clear the active session
+      navigate('/login');
+    };
+    
   return(
 <> 
     <header className="top_bar">
@@ -20,24 +28,27 @@ function Frappe() {
       <nav>
         <ul className="links">
           <li>
-            <a href="WebsiteCafe.html#HomePage" className="box-bar">
+            <Link to="/WebsiteCafe" className="box-bar">
               HOME
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="WebsiteCafe.html#ProductSelection" className="box-bar">
+            <Link href="WebsiteCafe.html#ProductSelection" className="box-bar">
               PRODUCT
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="WebsiteCafe.html#aboutus" className="box-bar">
+            <Link href="WebsiteCafe.html#aboutus" className="box-bar">
               ABOUT US
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="WebsiteCafe.html#Contact" className="box-bar">
+            <Link href="WebsiteCafe.html#Contact" className="box-bar">
               CONTACT
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/" onClick={handleLogoutClick}>LOGOUT</Link>
           </li>
         </ul>
       </nav>

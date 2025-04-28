@@ -11,7 +11,8 @@ function MySwiper() {
       </div>
       <Swiper
         className="swiper-wrapper"
-        spaceBetween={30}
+        spaceBetween={150}
+        slidesPerView={1}
         autoplay={{ delay: 5000 }}
         speed={1000} // Adjusted speed for slower sliding animation
       >
