@@ -14,7 +14,10 @@
   --theme-color7: #ffffff;
 }
 
-
+.WebsiteFrappe {
+	width: 100vw;
+	overflow: hidden;
+}
 
 /* NAVBAR */
 header{
@@ -41,7 +44,6 @@ header{
   color: var(--theme-color5);
 }
 .cafe_logo, .navbar {
-  display: flex;
   align-items: center;
 }
 .navbar li{
@@ -127,7 +129,7 @@ header{
 }
 
 .SwiperContainer {
-  overflow: hidden;
+  overflow-y: visible;
 }
 .swiper2 {
   width: 100%;
@@ -137,17 +139,16 @@ header{
   cursor: grab;
 }
 .swiper-wrapper2 {
-  width: 100%;
-  height: auto;
-  overflow: visible;
+	overflow: visible;
   margin-top: 3rem;
   justify-content: flex-start;
 }
 
-.swiper-slide {
+.frappeswiper-slide {
   flex-direction: column-reverse;
-  height: auto;
-  width: 30%;
+  height: 25%;
+  width: 10%;
+	overflow: visible;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -157,10 +158,10 @@ header{
   animation: bestproductimg 5s ease-in-out infinite;
 }
     
-.swiper-slide img {
+.frappeswiper-slide img {
   display: block;
   height: auto;
-  width: 80%;
+  width: 50%;
   object-fit: contain;
 }
 

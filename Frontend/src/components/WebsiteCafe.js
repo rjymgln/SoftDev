@@ -10,6 +10,7 @@ import Footer from './Main Sections/Footer';
 function WebsiteCafe ({onLogout}) {
   return (
 <>
+<div className='WebsiteCafe'>
   <NAVBAR onLogout={onLogout}/>
   <Homepage/>
   <ProductSelection/>
@@ -17,7 +18,8 @@ function WebsiteCafe ({onLogout}) {
   <ContactPage/>
   
   <Footer/>
-  
+</div>
+
 </>
   );
 }

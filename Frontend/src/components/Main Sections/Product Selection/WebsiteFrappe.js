@@ -21,7 +21,7 @@ function Frappe() {
     };
 
   return(
-<body> 
+<div className="WebsiteFrappe"> 
     <header className="top_bar">
     <div className="cafe_logo">
       <img src={require('../../../Assets/cafelogo.png')} alt="GV CAFE" />
@@ -77,7 +77,7 @@ function Frappe() {
           slidesPerView={'4'}
           
         >
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide className="frappeswiper-slide">
             <img
               src={require('../../../Assets/frappe1.png')}
               onClick={()=> openSimplePopup('Cookies & Cream', '₱49.00', 'frappe1.png')}
@@ -85,7 +85,7 @@ function Frappe() {
             />
             <h3 className="name">Cookies &amp; Cream</h3>
           </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide className="frappeswiper-slide">
             <img
               src={require('../../../Assets/frappe2.png')}
               onClick={() => openSimplePopup('Salted Caramel', '₱49.00', 'frappe2.png')}
@@ -93,7 +93,7 @@ function Frappe() {
               />
             <h3 className="name">Salted Caramel</h3>
           </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide className="frappeswiper-slide">
             <img
               src={require('../../../Assets/frappe3.png')}
               onClick={() => openSimplePopup('Matcha', '₱49.00', 'frappe3.png')}            
@@ -101,7 +101,7 @@ function Frappe() {
               />
             <h3 className="name">Matcha</h3>
           </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide className="frappeswiper-slide">
             <img
               src={require('../../../Assets/frappe4.png')}
               onClick={() => openSimplePopup('Sweet & Cream', '₱49.00', 'frappe4.png')}
@@ -109,7 +109,7 @@ function Frappe() {
               />
             <h3 className="name">Sweet &amp; Cream</h3>
           </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide className="frappeswiper-slide">
             <img
               src={require('../../../Assets/frappe5.png')}
               onClick={() => openSimplePopup('Dark Mocha', '₱49.00', 'frappe5.png')}
@@ -117,7 +117,7 @@ function Frappe() {
               />
             <h3 className="name">Dark Mocha</h3>
           </SwiperSlide>
-          <SwiperSlide className="swiper-slide">
+          <SwiperSlide className="frappeswiper-slide">
             <img
               src={require('../../../Assets/frappe6.png')}
               onClick={() => openSimplePopup('Chocolate', '₱49.00', 'frappe6.png')}
@@ -161,7 +161,7 @@ function Frappe() {
       </div>
     </div>
   </div>
-</body>
+</div>
 );
 }
 

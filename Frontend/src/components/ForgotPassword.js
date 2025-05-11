@@ -13,6 +13,7 @@ function ForgotPassword() {
   };
 
   return (
+	<div className='login'>
     <div className="forgot-password-container">
       <div className="logo-container">
         <img src={logo} alt="Logo" className="logo" />
@@ -36,6 +37,7 @@ function ForgotPassword() {
       {/* Corrected Link to go back to Login */}
       <p><Link to="/" className="back-to-login">Back to Login</Link></p>
     </div>
+	</div>
   );
 }
 
