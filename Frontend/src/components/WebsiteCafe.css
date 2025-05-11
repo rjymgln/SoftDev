@@ -12,11 +12,14 @@ body{
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-  min-height: 100vh;
-  width: 100vw;
+ 
   background: linear-gradient(to right, #d2a679, #e6c7a1);
 }
 
+.WebsiteCafe {
+	min-height: 100vh;
+  width: 100vw;
+}
 :root{
   --theme-color1: #ece0d1;
   --theme-color2: #dbc1ac;

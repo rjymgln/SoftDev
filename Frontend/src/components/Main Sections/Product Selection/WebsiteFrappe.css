@@ -41,7 +41,6 @@ header{
   color: var(--theme-color5);
 }
 .cafe_logo, .navbar {
-  display: flex;
   align-items: center;
 }
 .navbar li{

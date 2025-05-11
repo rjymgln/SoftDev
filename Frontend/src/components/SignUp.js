@@ -43,6 +43,7 @@ function SignUp() {
   };
 
   return (
+	<div className='login'>	
     <div className="login-container">
       <div className="logo-container">
         <img src={logo} alt="Logo" className="logo" />
@@ -99,6 +100,7 @@ function SignUp() {
         Already have an account? <Link to="/" className="login-link">Login</Link>
       </p>
     </div>
+	</div>
   );
 }
 

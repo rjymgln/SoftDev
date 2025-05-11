@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate
-import '../login.css'; 
+import '../'; 
 import cafelogo from '../Assets/cafelogo.png';
 
 function Login() {
@@ -34,6 +34,7 @@ function Login() {
   };
 
   return (
+	<div className='login'>	
     <div className="login-container">
       <div className="logo-container">
         <img src={cafelogo} alt="Logo" className="logo" />
@@ -74,6 +75,7 @@ function Login() {
         </p>
       </div>
     </div>
+	</div>
   );
 }
 
