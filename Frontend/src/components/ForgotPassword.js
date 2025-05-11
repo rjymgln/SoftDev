@@ -20,7 +20,7 @@ function ForgotPassword() {
       </div>
       <h2>Forgot Password</h2>
       <p>Please enter your email address to receive a link to reset your password.</p>
-      <form onSubmit={handleResetPassword}>
+      <form action="#" method="POST" onSubmit={handleResetPassword}>
         <label htmlFor="email">Email Address</label>
         <input
           type="email"

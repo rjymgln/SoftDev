@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate
 import '../login.css';
 import logo from '../Assets/cafelogo.png';
 
-function SignUp() {
+export default function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,7 +35,7 @@ function SignUp() {
       setMessage('Email already exists.');
       return;
     }
-
+    
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     setMessage('Signup Successful! You can now log in.');
@@ -49,7 +49,7 @@ function SignUp() {
         <img src={logo} alt="Logo" className="logo" />
       </div>
       <h2>Sign Up</h2>
-      <form>
+      <form method="POST" action="./PHP/signup.php">
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -104,4 +104,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+

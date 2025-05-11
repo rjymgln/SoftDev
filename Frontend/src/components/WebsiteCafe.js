@@ -7,21 +7,15 @@ import AboutUs from './Main Sections/AboutUs';
 import ContactPage from './Main Sections/ContactPage';
 import Footer from './Main Sections/Footer';
 
-function WebsiteCafe ({onLogout}) {
+export default function WebsiteCafe ({onLogout}) {
   return (
-<>
 <div className='WebsiteCafe'>
   <NAVBAR onLogout={onLogout}/>
   <Homepage/>
   <ProductSelection/>
   <AboutUs/>
   <ContactPage/>
-  
   <Footer/>
 </div>
-
-</>
   );
 }
-
-export default WebsiteCafe;
