@@ -59,7 +59,7 @@
 .homepage {
     grid-template-columns: 1fr; 
     text-align: center;
-    height: 100vh;
+    min-height: fit-content;
     padding: 50px 10px;
 }
 

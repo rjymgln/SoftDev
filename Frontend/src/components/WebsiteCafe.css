@@ -112,7 +112,7 @@ header{
 .homepage{
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
 
 .welcoming_user{
@@ -130,7 +130,7 @@ header{
 }
 .welcoming_user p{
   font-size: 1.2rem;
-  margin: 50px 250px 0 10%;
+  margin: 50px 100px 0 10%;
 }
 
 .bestproduct_title h1{
