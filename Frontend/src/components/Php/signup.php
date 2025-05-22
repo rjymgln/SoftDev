@@ -43,4 +43,4 @@ $stmt->execute();
     } else {
         echo "<script>alert('Passwords do not match');</script>";
     }
-*/
+*/ 
