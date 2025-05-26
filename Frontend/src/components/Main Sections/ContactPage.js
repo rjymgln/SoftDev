@@ -1,63 +1,73 @@
 import React, { useState } from 'react'
 
 function ContactPage() {
-  const [name, setName] = useState ('');
-  const [email, setEmail] = useState ('');
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [responseMsg, setResponseMsg] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log(name, email, message);
-    setName('');
+
+    try {
+      const response = await fetch('http://localhost/softdev/contactpage.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          Email: email,
+          Message: message,
+        }),
+      });
+
+      const result = await response.text();
+      setResponseMsg(result); // show PHP response message
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      setResponseMsg('❌ Submission failed. Please try again.');
+    }
+
+    // Clear form fields
     setEmail('');
     setMessage('');
   };
 
   return (
     <section className="contact" id="Contact">
-      <form action="WebsiteCafe" className="container" method="post" onSubmit={handleSubmit}>
+      <form className="container" onSubmit={handleSubmit}>
         <div className="contact-page">
           <div className="left" />
           <div className="right">
             <h2 className="contact-name">Contact Us</h2>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName (e.target.value)}
-              className="field"
-              placeholder="Enter Name"
-              id="Name"
-              name="Name"
-              required=""
-            />
+
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail (e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="field"
               placeholder="Enter Email"
               id="Email"
               name="Email"
-              required=""
+              required
             />
+
             <textarea
-              type="text"
               className="field"
               placeholder="Message"
               id="Message"
               name="Message"
-              required=""
+              required
               value={message}
-              onChange={(e) => setMessage (e.target.value)}
+              onChange={(e) => setMessage(e.target.value)}
             />
-            <button className="contact-btn">Send</button>
+
+            <button className="contact-btn" type="submit">Send</button>
+            {responseMsg && <p className="response">{responseMsg}</p>}
           </div>
         </div>
       </form>
     </section>
-
-  )
+  );
 }
 
 export default ContactPage
