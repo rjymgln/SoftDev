@@ -1,5 +1,4 @@
 import React, {useState}from 'react'
-import {Link} from "react-router-dom"
 
 function ProductSelection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
