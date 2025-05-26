@@ -57,10 +57,11 @@
 
 /* Home Page */
 .homepage {
-    grid-template-columns: 1fr; 
-    text-align: center;
-    min-height: fit-content;
-    padding: 50px 10px;
+    grid-template-columns: 1fr;
+		text-align: center;
+		min-height: fit-content;
+		padding: 50px 10px;
+		height: auto;
 }
 
 .welcoming_user {
@@ -68,8 +69,11 @@
 }
 
 .welcoming_user h1 {
-    font-size: 2rem;
-    
+    display: flex;
+		font-size: 2rem;
+		margin: 0;
+		justify-content: center;
+		text-align: center;
 }
 
 .welcoming_user p {
@@ -84,6 +88,7 @@
 
 .bestproduct_title h1{
     font-size: 1.5rem;
+		margin: 80px 25px 0px 25px;
 }
 
 /* Home Product Images */
@@ -95,9 +100,9 @@
 
 /* Product Selection */
 .product_selection1 {
-    height: fit-content;
-    margin: 0;
-    padding: 0;
+		height: fit-content;
+		margin: 0px;
+		padding-bottom: 20px;
 }
 
 .main_product {

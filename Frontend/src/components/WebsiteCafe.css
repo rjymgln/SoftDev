@@ -1,5 +1,3 @@
-
-
 *{
   box-sizing: border-box;
   padding: 0;
@@ -161,8 +159,6 @@ header{
 }
 /* PRODUCT IMAGES HOME PAGE */
 .swiper {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -171,18 +167,26 @@ header{
   
   /* cursor: grab; */
 }
+
+.swipercontainer{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
 .swiper-wrapper {
   margin-bottom: 2rem;
-  width: 60%;
+  width: 50%;
+	height: 100%;
   display: flex;  
-  justify-content: start;
-  align-items: flex-start;
-  overflow: visible;
-  height: 80%;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .swiper-slide {
-  width: 30%;
+
   cursor: grab;
   text-align: center;
   display: flex;
