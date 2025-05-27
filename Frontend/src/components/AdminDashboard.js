@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css'
+import './OrdersStyle.css'
 import CardComponent from './cardscomponent';
 
 const orders = [
@@ -99,12 +100,12 @@ function AdminDashboard() {
 				<nav>
 					<ul className='tabs'>
 						<li>
-							<a href='/admin-dashboard'>
+							<a href='/admin-dashboard/Orders'>
 								Orders
 							</a>
 						</li>
 						<li>
-							<a href='#null'>
+							<a href='/admin-dashboard/Products'>
 								Products
 							</a>
 						</li>
@@ -129,7 +130,7 @@ function AdminDashboard() {
         <div className='cardsection'>
           <div className='card-container'>
             {orders.map((orders) => (
-              <CardComponent key={orders.Id} orders={orders} />
+              <CardComponent key={orders.Id} data={orders} type="Orders" />
             ))}
           </div>
         </div>

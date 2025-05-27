@@ -1,0 +1,81 @@
+/* cards section */
+
+
+.cards {
+  text-wrap: wrap;
+  padding: 15px;
+  background-color: #ccc;
+  flex-basis: 20%;
+  flex-shrink: 1;
+  max-width: 40%;
+  height: fit-content;
+  border-radius: 15px;
+  display:flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cards h3 {
+  width: auto;
+  text-align: center;
+}
+
+.cards p {
+  font-size: 1.2em;
+}
+
+.colcontainer{
+  display: block;
+  position: relative;
+  margin: 6px;
+}
+
+.colcontainer p{
+  font-size: 1rem;
+  text-wrap: nowhitespace;
+}
+
+.colcontainer img{
+  height: 80%;
+  width: 80%;
+  background-size: contain;
+}
+
+.product-details {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 4px;
+  font-size: 1rem;
+  }
+
+.product-details p {
+  font-size: 1rem;
+  text-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.total {
+  margin-top: auto;
+  text-align: right;
+  width: auto;
+  padding-top: 10px;
+}
+
+.editBtn, .availabilityBtn{
+  position: absolute;
+  bottom: -59px;
+  width: 100px;
+  font-size: 1rem;
+}
+
+.editBtn {
+  right: 0;
+}
+
+.availabilityBtn {
+  left: 0;
+}
