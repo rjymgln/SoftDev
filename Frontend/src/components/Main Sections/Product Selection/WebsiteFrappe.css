@@ -322,5 +322,60 @@ body{
   color: gold;
 }
 
+.buy-btn {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 8px 18px; /* Reduced padding */
+  border: none;
+  border-radius: 6px; /* Slightly less rounded */
+  cursor: pointer;
+  font-size: 1em; /* Smaller font size */
+  font-weight: bold;
+  margin-top: 20px; /* Adjusted margin-top */
+  width: auto; /* Allow width to be determined by content, not 100% */
+  display: inline-block; /* Make it an inline-block to respect width: auto */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
 
+.buy-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px); /* Subtle lift on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow on hover */
+}
+
+/* Ensure responsive adjustments for smaller screens also reflect the smaller button */
+@media (max-width: 480px) {
+  .buy-btn {
+    font-size: 0.9em; /* Even smaller on very small screens */
+    padding: 7px 15px; /* Adjust padding further */
+    width: auto; /* Keep it from stretching */
+  }
+}
+
+/* --- New CSS for Highlighted Total Price --- */
+
+.product-total {
+  font-size: 24px; /* Larger font size */
+  color: #ffe082; /* A golden/yellowish color for highlight */
+  font-weight: bold; /* Make it bold */
+  margin-top: 15px; /* Adjust spacing */
+  margin-bottom: 25px; /* More space below */
+  text-align: center;
+  width: 100%;
+  /* Optional: Add a subtle text shadow for more pop */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust responsive styles for highlighted total */
+@media (max-width: 768px) {
+  .product-total {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-total {
+    font-size: 20px;
+  }
+}
 
