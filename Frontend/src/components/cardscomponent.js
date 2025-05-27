@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export default function CardComponent({data, type, isEditOpen, editToggle, onEdit}) { 
+export default function CardComponent({ data, type, isEditOpen, editToggle, onEdit }) {
   let cardComponent;
-  
-  if(type==='Orders'){
-    cardComponent=(
+
+  if (type === 'Orders') {
+    cardComponent = (
       <>
         <h3>Order ID# {data.Id} </h3>
         <div className='colcontainer'>
@@ -28,8 +28,8 @@ export default function CardComponent({data, type, isEditOpen, editToggle, onEdi
         <button className="finishBtn"><strong>Finish</strong></button>
       </>
     )
-  } else if (type ==='Products'){
-    cardComponent =(
+  } else if (type === 'Products') {
+    cardComponent = (
       <>
         <h3> {data.productName} <strong>({data.availability})</strong> </h3>
         <div className='colcontainer'>
@@ -37,26 +37,24 @@ export default function CardComponent({data, type, isEditOpen, editToggle, onEdi
         </div>
         <div className='product-details'>
           <p><strong>Product : {data.productId} </strong></p>
-          <p><strong>Price: ₱{data.price}</strong> </p>
+          {/* Price hidden here */}
+          {/* <p><strong>Price: ₱{data.price}</strong> </p> */}
         </div>
-        <button className="editBtn" onClick={()=> onEdit(data)}><strong>Edit</strong></button>
+        <button className="editBtn" onClick={() => onEdit(data)}><strong>Edit</strong></button>
       </>
     )
-  }else {
-    cardComponent=(
+  } else {
+    cardComponent = (
       <>
-      <h3>Unknown card type</h3>
-      <p>Type "{type}" is not supported</p>
+        <h3>Unknown card type</h3>
+        <p>Type "{type}" is not supported</p>
       </>
     )
   }
-  
-  return(
+
+  return (
     <div className="cards">
       {cardComponent}
     </div>
   )
-
-
 }
-
