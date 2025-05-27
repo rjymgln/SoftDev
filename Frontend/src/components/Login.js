@@ -25,7 +25,7 @@ function Login() {
       localStorage.setItem('activeUser', username);
 
       if (result.is_admin === 1) {
-        navigate('/admin-dashboard');
+        navigate('/admin-dashboard/Orders');
       } else {
         navigate('/WebsiteCafe');
       }

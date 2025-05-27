@@ -16,11 +16,13 @@
 
 .WebsiteFrappe {
 	width: 100vw;
+  height: 100vh;
 	overflow: hidden;
 }
 
 /* NAVBAR */
 header{
+  position: sticky;
   padding: 4px 10px;
   background: rgb(163,120,84);
   background: linear-gradient(90deg, rgba(163,120,84,1) 0%, rgba(234,194,154,1) 35%, rgba(191,143,94,1) 100%);
