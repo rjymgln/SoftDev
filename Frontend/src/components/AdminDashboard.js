@@ -1,5 +1,74 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AdminDashboard.css'
+import CardComponent from './cardscomponent';
+
+const orders = [
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+]
+
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -7,47 +76,66 @@ function AdminDashboard() {
   useEffect(() => {
     const user = localStorage.getItem('activeUser');
     if (!user) {
-      navigate('/login');  // Redirect if not logged in
+      navigate('/');  // Redirect if not logged in
     }
   }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('activeUser');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Admin Dashboard</h1>
-      <p>Welcome, <strong>{localStorage.getItem('activeUser')}</strong> (Admin)</p>
-      <button onClick={handleLogout} style={styles.logoutBtn}>Logout</button>
+    <div className='admincontainer'>
+      {/* navbar */}
+      <header className='adminheader'>
+        <div className='adminlogo'>
+          <h2><strong>GV CAFE</strong></h2>
+          <h2>Admin Dashboard</h2>    
+          
+        </div>
+        <button className='menu-burger'></button>
+        <div>
+				<nav>
+					<ul className='tabs'>
+						<li>
+							<a href='/admin-dashboard'>
+								Orders
+							</a>
+						</li>
+						<li>
+							<a href='#null'>
+								Products
+							</a>
+						</li>
+						<li>
+							<a href='#null'>
+								Account
+							</a>
+						</li>
+						<li>
+							<a href='/' onClick={handleLogout}>
+								Logout
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+      </header>
+      
+      {/* dashboardsection */}
+      <div className='dashboardsection'>
+        <h2>Orders:</h2>
+        <div className='cardsection'>
+          <div className='card-container'>
+            {orders.map((orders) => (
+              <CardComponent key={orders.Id} orders={orders} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    margin: '50px auto',
-    textAlign: 'center',
-    maxWidth: '500px',
-    padding: '30px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-    backgroundColor: '#f9f9f9'
-  },
-  heading: {
-    marginBottom: '20px',
-    color: '#333'
-  },
-  logoutBtn: {
-    padding: '10px 20px',
-    backgroundColor: '#d9534f',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer'
-  }
-};
 
 export default AdminDashboard;
