@@ -15,6 +15,7 @@ function Frappe() {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [selectedRating, setSelectedRating] = useState(0);
+  const [frappePrices, setFrappePrices] = useState({}); // Store prices from backend
 
   const parsePrice = (priceString) => {
     return parseFloat(priceString.replace("₱", "").replace(",", ""));
@@ -26,6 +27,16 @@ function Frappe() {
       setTotalPrice((unitPrice * quantity).toFixed(2));
     }
   }, [quantity, popupData.price]);
+
+  useEffect(() => {
+    // Fetch frappe prices from PHP endpoint
+    fetch("http://localhost/softdev/frappe_prices.php")
+      .then((res) => res.json())
+      .then((data) => {
+        setFrappePrices(data);
+      })
+      .catch((err) => console.error("Failed to fetch frappe prices:", err));
+  }, []);
 
   const openSimplePopup = (id, name, price, image) => {
     setPopupData({ id, name, price, image: require(`../../../Assets/${image}`) });
@@ -71,6 +82,16 @@ function Frappe() {
     }
   };
 
+  // frappe items with hardcoded images
+  const frappeItems = [
+    { id: 1, name: "Cookies & Cream", img: "frappe1.png" },
+    { id: 2, name: "Salted Caramel", img: "frappe2.png" },
+    { id: 3, name: "Matcha", img: "frappe3.png" },
+    { id: 4, name: "Sweet & Cream", img: "frappe4.png" },
+    { id: 5, name: "Dark Mocha", img: "frappe5.png" },
+    { id: 6, name: "Chocolate", img: "frappe6.png" },
+  ];
+
   return (
     <div className="WebsiteFrappe">
       <header className="top_bar">
@@ -81,11 +102,31 @@ function Frappe() {
         <div className="navbar">
           <nav>
             <ul className="links">
-              <li><Link to="/WebsiteCafe" className="box-bar">HOME</Link></li>
-              <li><Link to="/WebsiteCafe#ProductSelection" className="box-bar">PRODUCT</Link></li>
-              <li><Link to="/WebsiteCafe#aboutus" className="box-bar">ABOUT US</Link></li>
-              <li><Link to="/WebsiteCafe#Contact" className="box-bar">CONTACT</Link></li>
-              <li><Link to="/" onClick={handleLogoutClick}>LOGOUT</Link></li>
+              <li>
+                <Link to="/WebsiteCafe" className="box-bar">
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link to="/WebsiteCafe#ProductSelection" className="box-bar">
+                  PRODUCT
+                </Link>
+              </li>
+              <li>
+                <Link to="/WebsiteCafe#aboutus" className="box-bar">
+                  ABOUT US
+                </Link>
+              </li>
+              <li>
+                <Link to="/WebsiteCafe#Contact" className="box-bar">
+                  CONTACT
+                </Link>
+              </li>
+              <li>
+                <Link to="/" onClick={handleLogoutClick}>
+                  LOGOUT
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -99,28 +140,21 @@ function Frappe() {
           </div>
           <div className="SwiperContainer">
             <Swiper className="swiper-wrapper2" id="FrappeWrapper" centeredSlides={true} slidesPerView={"4"}>
-              {[{
-                id: 1, name: "Cookies & Cream", img: "frappe1.png"
-              }, {
-                id: 2, name: "Salted Caramel", img: "frappe2.png"
-              }, {
-                id: 3, name: "Matcha", img: "frappe3.png"
-              }, {
-                id: 4, name: "Sweet & Cream", img: "frappe4.png"
-              }, {
-                id: 5, name: "Dark Mocha", img: "frappe5.png"
-              }, {
-                id: 6, name: "Chocolate", img: "frappe6.png"
-              }].map((item) => (
-                <SwiperSlide key={item.id} className="frappeswiper-slide">
-                  <img
-                    src={require(`../../../Assets/${item.img}`)}
-                    onClick={() => openSimplePopup(item.id, item.name, "₱49.00", item.img)}
-                    alt={item.name}
-                  />
-                  <h3 className="name">{item.name}</h3>
-                </SwiperSlide>
-              ))}
+              {frappeItems.map((item) => {
+                const price = frappePrices[item.id.toString()] ? `₱${frappePrices[item.id.toString()]}` : "₱49.00";
+
+                return (
+                  <SwiperSlide key={item.id} className="frappeswiper-slide">
+                    <img
+                      src={require(`../../../Assets/${item.img}`)}
+                      onClick={() => openSimplePopup(item.id, item.name, price, item.img)}
+                      alt={item.name}
+                    />
+                    <h3 className="name">{item.name}</h3>
+                    
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </div>
@@ -128,12 +162,18 @@ function Frappe() {
 
       {/* Popup */}
       <div className={`product-popup ${isPopupOpen ? "open" : ""}`} id="simplePopup">
-        <button className="closeBtn" onClick={closePopup}>×</button>
+        <button className="closeBtn" onClick={closePopup}>
+          ×
+        </button>
         <div className="popup-content">
           <img src={popupData.image} id="simplePopupImage" className="product-img" alt="Drink" />
           <div className="popup-details">
-            <h2 id="simplePopupName" className="product-name">{popupData.name}</h2>
-            <p id="simplePopupPrice" className="product-price">{popupData.price}</p>
+            <h2 id="simplePopupName" className="product-name">
+              {popupData.name}
+            </h2>
+            <p id="simplePopupPrice" className="product-price">
+              {popupData.price}
+            </p>
 
             <div className="quantity-selector">
               <button onClick={handleDecrement}>-</button>
@@ -190,7 +230,9 @@ function Frappe() {
               Submit Rating
             </button>
 
-            <button className="buy-btn" onClick={handleBuyClick}>Buy Now</button>
+            <button className="buy-btn" onClick={handleBuyClick}>
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
