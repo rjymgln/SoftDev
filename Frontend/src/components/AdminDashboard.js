@@ -99,12 +99,12 @@ function AdminDashboard() {
 				<nav>
 					<ul className='tabs'>
 						<li>
-							<a href='/admin-dashboard'>
+							<a href='/admin-dashboard/Orders'>
 								Orders
 							</a>
 						</li>
 						<li>
-							<a href='#null'>
+							<a href='/admin-dashboard/Products'>
 								Products
 							</a>
 						</li>
@@ -129,7 +129,7 @@ function AdminDashboard() {
         <div className='cardsection'>
           <div className='card-container'>
             {orders.map((orders) => (
-              <CardComponent key={orders.Id} orders={orders} />
+              <CardComponent key={orders.Id} data={orders} type="Orders" />
             ))}
           </div>
         </div>
