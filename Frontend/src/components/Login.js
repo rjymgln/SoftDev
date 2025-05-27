@@ -23,7 +23,12 @@ function Login() {
     if (result.success) {
       setMessage('Login Successful!');
       localStorage.setItem('activeUser', username);
-      navigate('/WebsiteCafe');
+
+      if (result.is_admin === 1) {
+        navigate('/admin-dashboard');
+      } else {
+        navigate('/WebsiteCafe');
+      }
     } else {
       setMessage(result.message);
     }

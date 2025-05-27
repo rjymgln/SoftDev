@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
-import SignUp from './components/SignUp';  // Correct import path
-import ForgotPassword from './components/ForgotPassword';  // Correct import path
+import SignUp from './components/SignUp';
+import ForgotPassword from './components/ForgotPassword';
 import ProtectedRoute from './components/ProtectedRoute';
 import WebsiteCafe from './components/WebsiteCafe';
-import Frappe from './components/Main Sections/Product Selection/WebsiteFrappe'
+import Frappe from './components/Main Sections/Product Selection/WebsiteFrappe';
+import AdminDashboard from './components/AdminDashboard';  // ✅ Admin route
 
 function App() {
   return (
@@ -15,10 +16,10 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/WebsiteCafe" element={<ProtectedRoute />}>
-          <Route path='/WebsiteCafe' element= {<WebsiteCafe/>} />
+          <Route path='/WebsiteCafe' element={<WebsiteCafe />} />
         </Route>
-        <Route path='/frappe' element= {<Frappe/>} />
-        
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />  {/* ✅ New route */}
+        <Route path="/frappe" element={<Frappe />} />
       </Routes>
     </Router>
   );

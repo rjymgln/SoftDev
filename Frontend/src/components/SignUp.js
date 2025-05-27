@@ -12,41 +12,41 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!username || !email || !password) {
-      setMessage('Please fill in all required fields.');
-      return;
+  if (!username || !email || !password) {
+    setMessage('Please fill in all required fields.');
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    setMessage('Passwords do not match!');
+    return;
+  }
+
+  const payload = { username, email, password };
+
+  try {
+    const response = await fetch('http://localhost/softdev/signup.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      setMessage('Signup Successful! You can now log in.');
+      navigate('/'); // Redirect to login page
+    } else {
+      setMessage(result.message || 'Signup failed.');
     }
-
-    if (password !== confirmPassword) {
-      setMessage('Passwords do not match!');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('email', email);
-    formData.append('password', password);
-
-    try {
-      const response = await fetch('http://localhost/softdev/signup.php', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setMessage('Signup Successful! You can now log in.');
-        navigate('/'); // Redirect to login page
-      } else {
-        setMessage(result.message || 'Signup failed.');
-      }
-    } catch (error) {
-      setMessage('Error: Could not connect to server.');
-    }
-  };
+  } catch (error) {
+    setMessage('Error: Could not connect to server.');
+  }
+};
 
   return (
     <div className='login'>	
