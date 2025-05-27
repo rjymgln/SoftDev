@@ -140,3 +140,27 @@ body{
   column-gap: 60px;
   overflow: scroll;
 }
+
+.order-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.finish-btn {
+  padding: 8px 15px;
+  background-color: #28a745; /* green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.finish-btn:hover {
+  background-color: #218838;
+}
+
