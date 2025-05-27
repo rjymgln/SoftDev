@@ -37,8 +37,7 @@ export default function CardComponent({ data, type, isEditOpen, editToggle, onEd
         </div>
         <div className='product-details'>
           <p><strong>Product : {data.productId} </strong></p>
-          {/* Price hidden here */}
-          {/* <p><strong>Price: ₱{data.price}</strong> </p> */}
+          <p><strong>Price: ₱{data.price}</strong> </p>
         </div>
         <button className="editBtn" onClick={() => onEdit(data)}><strong>Edit</strong></button>
       </>
