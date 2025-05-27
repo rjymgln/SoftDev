@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../login.css';
+import './login.css';
 import logo from '../Assets/cafelogo.png';
 
 export default function SignUp() {

@@ -1,0 +1,100 @@
+.admincontainer {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #f9f9f9;
+}
+
+.adminheader{
+  display: flex;
+  flex-flow: row nowrap;
+  position: sticky;
+  align-items: center;
+  padding: 0 15px 0 15px;
+  top: 0;
+  background: none;
+  background-color: #ccc;
+  height: 80px;
+}
+
+.adminlogo {
+  display: flex;
+  flex-flow: row;
+}
+
+.adminlogo h1, h2{
+  color: #333;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.adminlogo h1{
+  color: #333;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+
+.logoutBtn {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer
+}
+
+.tabs {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.adminheader li{
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.box-bar, .cafe_logo{
+  padding: 0 15px;
+  border-radius: 5px;
+}
+.adminheader li a{   
+  text-decoration: none;
+  color: var(--theme-color5);
+}
+
+.adminheader .tabs a{
+  position: relative;
+  color: var(--theme-color5);
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 650;
+}
+.adminheader .tabs a::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 10px;
+  background: var(--theme-color5);
+  border-radius: 5px;
+  border-color: #000000;
+  transform: scaleX(0);
+  transition: transform .4s;
+}
+.adminheader .tabs a:hover::after{
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* dashboard section */
+.dashboardsection {
+  height: 100vh;
+
+}
