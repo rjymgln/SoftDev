@@ -13,12 +13,11 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Get hashed password for the username
-$sql = "SELECT password FROM users WHERE username = ?";
+// Get user info by username
+$sql = "SELECT password, is_admin FROM users WHERE username = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $username);
 $stmt->execute();
-
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
@@ -28,11 +27,16 @@ if ($result->num_rows === 0) {
 
 $row = $result->fetch_assoc();
 $hashed_password = $row["password"];
+$is_admin = $row["is_admin"];
 
 if (password_verify($password, $hashed_password)) {
-    echo json_encode(["success" => true, "message" => "Login successful."]);
+    echo json_encode([
+        "success" => true,
+        "message" => "Login successful.",
+        "is_admin" => $is_admin
+    ]);
 } else {
-    echo json_encode(["success" => false, "message" => "Invalid credentials."]);
+    echo json_encode(["success" => false, "message" => "wala credentials."]);
 }
 
 $stmt->close();

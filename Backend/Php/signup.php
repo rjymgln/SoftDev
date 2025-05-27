@@ -1,58 +1,58 @@
 <?php
-// Allow React frontend (localhost:3000) to access this
-header("Access-Control-Allow-Origin: http://localhost:3000");
-header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
 
-// Database connection settings - replace with your MySQL user/pass
-$servername = "localhost";
-$username_db = "root";  // usually root on XAMPP by default
-$password_db = "";      // usually empty on XAMPP by default
-$dbname = "softdev";
+// Decode JSON input
+$data = json_decode(file_get_contents("php://input"), true);
 
-// Connect to MySQL
-$conn = new mysqli($servername, $username_db, $password_db, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    echo json_encode(['success' => false, 'message' => 'Database connection failed']);
-    exit();
+if (!$data) {
+    echo json_encode(["success" => false, "message" => "Invalid input."]);
+    exit;
 }
 
-// Get POST data
-$user = isset($_POST['username']) ? trim($_POST['username']) : '';
-$email = isset($_POST['email']) ? trim($_POST['email']) : '';
-$pass = isset($_POST['password']) ? $_POST['password'] : '';
+$username = $data["username"] ?? '';
+$email = $data["email"] ?? '';
+$password = $data["password"] ?? '';
 
-if (!$user || !$email || !$pass) {
-    echo json_encode(['success' => false, 'message' => 'Please fill in all required fields']);
-    exit();
+if (empty($username) || empty($email) || empty($password)) {
+    echo json_encode(["success" => false, "message" => "Missing required fields."]);
+    exit;
+}
+
+$conn = new mysqli("localhost", "root", "", "softdev");
+if ($conn->connect_error) {
+    echo json_encode(["success" => false, "message" => "Database connection failed."]);
+    exit;
 }
 
 // Check if username or email already exists
-$stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
-$stmt->bind_param("ss", $user, $email);
+$sql = "SELECT id FROM users WHERE username = ? OR email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ss", $username, $email);
 $stmt->execute();
-$stmt->store_result();
+$result = $stmt->get_result();
 
-if ($stmt->num_rows > 0) {
-    echo json_encode(['success' => false, 'message' => 'Username or Email already exists']);
+if ($result->num_rows > 0) {
+    echo json_encode(["success" => false, "message" => "Username or email already exists."]);
     $stmt->close();
     $conn->close();
-    exit();
+    exit;
 }
 $stmt->close();
 
-// Hash password
-$hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+// Hash the password
+$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-// Insert new user
-$stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $user, $email, $hashed_password);
+// Insert new user (is_admin = 0 by default)
+$sql = "INSERT INTO users (username, email, password, is_admin, created_at) VALUES (?, ?, ?, 0, NOW())";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss", $username, $email, $hashed_password);
 
 if ($stmt->execute()) {
-    echo json_encode(['success' => true]);
+    echo json_encode(["success" => true, "message" => "Signup successful."]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Error saving user']);
+    echo json_encode(["success" => false, "message" => "Signup failed."]);
 }
 
 $stmt->close();
