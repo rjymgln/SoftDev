@@ -1,6 +1,74 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css'
+import CardComponent from './cardscomponent';
+
+const orders = [
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+  {
+    Id: 'OR123',
+    accountId: '22-420-69',
+    name: 'Toni Fowler',
+    products: 
+      {name: 'Macchiato', amount:'4', price: '20'}
+    ,
+    total: 50,
+  },
+]
+
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -26,9 +94,15 @@ function AdminDashboard() {
           <h2>Admin Dashboard</h2>    
           
         </div>
+        <button className='menu-burger'></button>
         <div>
 				<nav>
 					<ul className='tabs'>
+						<li>
+							<a href='/admin-dashboard'>
+								Orders
+							</a>
+						</li>
 						<li>
 							<a href='#null'>
 								Products
@@ -36,12 +110,12 @@ function AdminDashboard() {
 						</li>
 						<li>
 							<a href='#null'>
-								Orders
+								Account
 							</a>
 						</li>
 						<li>
-							<a href='#null'>
-								Account
+							<a href='/' onClick={handleLogout}>
+								Logout
 							</a>
 						</li>
 					</ul>
@@ -51,8 +125,14 @@ function AdminDashboard() {
       
       {/* dashboardsection */}
       <div className='dashboardsection'>
-      <p>Welcome, <strong>{localStorage.getItem('activeUser')}</strong></p>
-      <button className='logoutBtn' onClick={handleLogout} >Logout</button>
+        <h2>Orders:</h2>
+        <div className='cardsection'>
+          <div className='card-container'>
+            {orders.map((orders) => (
+              <CardComponent key={orders.Id} orders={orders} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
