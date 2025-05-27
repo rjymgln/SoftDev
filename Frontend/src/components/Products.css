@@ -79,3 +79,50 @@
 .availabilityBtn {
   left: 0;
 }
+
+.Edit {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000000cb;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.Edit.open {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0s 0s; 
+}
+
+.editorContainer {
+  overflow: scroll;
+  position: relative;
+  display: flex;
+  max-height: 550px;
+  max-width: 550px;
+  width: 40%;
+  height: 50%;
+  background-color: var(--theme-color1);
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.editorContainer form{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  z-index: 20;
+}

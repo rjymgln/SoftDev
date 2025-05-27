@@ -1,4 +1,6 @@
-export default function CardComponent({data, type}) { 
+import { useState } from "react";
+
+export default function CardComponent({data, type, isEditOpen, editToggle, onEdit}) { 
   let cardComponent;
   
   if(type==='Orders'){
@@ -29,7 +31,7 @@ export default function CardComponent({data, type}) {
   } else if (type ==='Products'){
     cardComponent =(
       <>
-        <h3> {data.productName} </h3>
+        <h3> {data.productName} <strong>({data.availability})</strong> </h3>
         <div className='colcontainer'>
           <img alt="#null" src={data.productImg} />
         </div>
@@ -37,8 +39,7 @@ export default function CardComponent({data, type}) {
           <p><strong>Product : {data.productId} </strong></p>
           <p><strong>Price: ₱{data.price}</strong> </p>
         </div>
-        <button className="editBtn"><strong>Finish</strong></button>
-        <button className="availabilityBtn"><strong>{data.availability}</strong></button>
+        <button className="editBtn" onClick={()=> onEdit(data)}><strong>Edit</strong></button>
       </>
     )
   }else {
