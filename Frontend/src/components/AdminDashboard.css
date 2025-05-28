@@ -142,12 +142,18 @@ body{
 }
 
 .order-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+	text-wrap: wrap;
   padding: 15px;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #ccc;
+  flex-basis: 20%;
+  flex-shrink: 1;
+  max-width: 40%;
+  height: fit-content;
+  border-radius: 15px;
+  display:flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .finish-btn {

@@ -62,7 +62,6 @@ function AdminDashboard() {
           <ul className="tabs">
             <li><a href="/admin-dashboard/Orders">Orders</a></li>
             <li><a href="/admin-dashboard/Products">Products</a></li>
-            <li><a href="#null">Account</a></li>
             <li><a href="/" onClick={handleLogout}>Logout</a></li>
           </ul>
         </nav>
